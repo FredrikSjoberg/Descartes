@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		76CF76891B5C376D00A2FCC8 /* Descartes.h in Headers */ = {isa = PBXBuildFile; fileRef = 76CF76881B5C376D00A2FCC8 /* Descartes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76CF768F1B5C376D00A2FCC8 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; };
+		76CF76961B5C376D00A2FCC8 /* DescartesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		76CF76901B5C376D00A2FCC8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76CF767A1B5C376D00A2FCC8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76CF76821B5C376D00A2FCC8;
+			remoteInfo = Descartes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		76CF76831B5C376D00A2FCC8 /* Descartes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Descartes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76CF76871B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76CF76881B5C376D00A2FCC8 /* Descartes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Descartes.h; sourceTree = "<group>"; };
+		76CF768E1B5C376D00A2FCC8 /* DescartesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76CF76941B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartesTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76CF767F1B5C376D00A2FCC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76CF768B1B5C376D00A2FCC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76CF768F1B5C376D00A2FCC8 /* Descartes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		76CF76791B5C376D00A2FCC8 = {
+			isa = PBXGroup;
+			children = (
+				76CF76851B5C376D00A2FCC8 /* Descartes */,
+				76CF76921B5C376D00A2FCC8 /* DescartesTests */,
+				76CF76841B5C376D00A2FCC8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		76CF76841B5C376D00A2FCC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				76CF76831B5C376D00A2FCC8 /* Descartes.framework */,
+				76CF768E1B5C376D00A2FCC8 /* DescartesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		76CF76851B5C376D00A2FCC8 /* Descartes */ = {
+			isa = PBXGroup;
+			children = (
+				76CF76881B5C376D00A2FCC8 /* Descartes.h */,
+				76CF76861B5C376D00A2FCC8 /* Supporting Files */,
+			);
+			path = Descartes;
+			sourceTree = "<group>";
+		};
+		76CF76861B5C376D00A2FCC8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76CF76871B5C376D00A2FCC8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		76CF76921B5C376D00A2FCC8 /* DescartesTests */ = {
+			isa = PBXGroup;
+			children = (
+				76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */,
+				76CF76931B5C376D00A2FCC8 /* Supporting Files */,
+			);
+			path = DescartesTests;
+			sourceTree = "<group>";
+		};
+		76CF76931B5C376D00A2FCC8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				76CF76941B5C376D00A2FCC8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		76CF76801B5C376D00A2FCC8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76CF76891B5C376D00A2FCC8 /* Descartes.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		76CF76821B5C376D00A2FCC8 /* Descartes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76CF76991B5C376D00A2FCC8 /* Build configuration list for PBXNativeTarget "Descartes" */;
+			buildPhases = (
+				76CF767E1B5C376D00A2FCC8 /* Sources */,
+				76CF767F1B5C376D00A2FCC8 /* Frameworks */,
+				76CF76801B5C376D00A2FCC8 /* Headers */,
+				76CF76811B5C376D00A2FCC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Descartes;
+			productName = Descartes;
+			productReference = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		76CF768D1B5C376D00A2FCC8 /* DescartesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76CF769C1B5C376D00A2FCC8 /* Build configuration list for PBXNativeTarget "DescartesTests" */;
+			buildPhases = (
+				76CF768A1B5C376D00A2FCC8 /* Sources */,
+				76CF768B1B5C376D00A2FCC8 /* Frameworks */,
+				76CF768C1B5C376D00A2FCC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76CF76911B5C376D00A2FCC8 /* PBXTargetDependency */,
+			);
+			name = DescartesTests;
+			productName = DescartesTests;
+			productReference = 76CF768E1B5C376D00A2FCC8 /* DescartesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		76CF767A1B5C376D00A2FCC8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Fredrik Sjoberg";
+				TargetAttributes = {
+					76CF76821B5C376D00A2FCC8 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					76CF768D1B5C376D00A2FCC8 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
+			};
+			buildConfigurationList = 76CF767D1B5C376D00A2FCC8 /* Build configuration list for PBXProject "Descartes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 76CF76791B5C376D00A2FCC8;
+			productRefGroup = 76CF76841B5C376D00A2FCC8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				76CF76821B5C376D00A2FCC8 /* Descartes */,
+				76CF768D1B5C376D00A2FCC8 /* DescartesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		76CF76811B5C376D00A2FCC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76CF768C1B5C376D00A2FCC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		76CF767E1B5C376D00A2FCC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76CF768A1B5C376D00A2FCC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76CF76961B5C376D00A2FCC8 /* DescartesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76CF76911B5C376D00A2FCC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76CF76821B5C376D00A2FCC8 /* Descartes */;
+			targetProxy = 76CF76901B5C376D00A2FCC8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		76CF76971B5C376D00A2FCC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		76CF76981B5C376D00A2FCC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		76CF769A1B5C376D00A2FCC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Descartes/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		76CF769B1B5C376D00A2FCC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Descartes/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		76CF769D1B5C376D00A2FCC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DescartesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		76CF769E1B5C376D00A2FCC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DescartesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		76CF767D1B5C376D00A2FCC8 /* Build configuration list for PBXProject "Descartes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76CF76971B5C376D00A2FCC8 /* Debug */,
+				76CF76981B5C376D00A2FCC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76CF76991B5C376D00A2FCC8 /* Build configuration list for PBXNativeTarget "Descartes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76CF769A1B5C376D00A2FCC8 /* Debug */,
+				76CF769B1B5C376D00A2FCC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		76CF769C1B5C376D00A2FCC8 /* Build configuration list for PBXNativeTarget "DescartesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76CF769D1B5C376D00A2FCC8 /* Debug */,
+				76CF769E1B5C376D00A2FCC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 76CF767A1B5C376D00A2FCC8 /* Project object */;
+}

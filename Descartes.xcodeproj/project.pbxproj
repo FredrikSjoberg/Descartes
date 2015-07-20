@@ -13,7 +13,6 @@
 		76CF770A1B5D74E800A2FCC8 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FB1B5D74E800A2FCC8 /* Edge.swift */; };
 		76CF770B1B5D74E800A2FCC8 /* Halfedge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */; };
 		76CF770C1B5D74E800A2FCC8 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FD1B5D74E800A2FCC8 /* Site.swift */; };
-		76CF770D1B5D74E800A2FCC8 /* Voronoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FE1B5D74E800A2FCC8 /* Voronoi.swift */; };
 		76CF770E1B5D74E800A2FCC8 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77001B5D74E800A2FCC8 /* Line.swift */; };
 		76CF770F1B5D74E800A2FCC8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77011B5D74E800A2FCC8 /* Node.swift */; };
 		76CF77101B5D74E800A2FCC8 /* HalfedgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77031B5D74E800A2FCC8 /* HalfedgeList.swift */; };
@@ -34,6 +33,7 @@
 		76CF77521B5D7C0800A2FCC8 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77511B5D7C0800A2FCC8 /* Matrix.swift */; };
 		76CF77591B5D7DAD00A2FCC8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 76CF77571B5D7DAD00A2FCC8 /* LICENSE */; };
 		76CF775A1B5D7DAD00A2FCC8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77581B5D7DAD00A2FCC8 /* README.md */; };
+		76CF775C1B5D7E3D00A2FCC8 /* Voronoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF775B1B5D7E3D00A2FCC8 /* Voronoi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,6 @@
 		76CF76FB1B5D74E800A2FCC8 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Halfedge.swift; sourceTree = "<group>"; };
 		76CF76FD1B5D74E800A2FCC8 /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
-		76CF76FE1B5D74E800A2FCC8 /* Voronoi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voronoi.swift; sourceTree = "<group>"; };
 		76CF77001B5D74E800A2FCC8 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		76CF77011B5D74E800A2FCC8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		76CF77031B5D74E800A2FCC8 /* HalfedgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfedgeList.swift; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		76CF77511B5D7C0800A2FCC8 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		76CF77571B5D7DAD00A2FCC8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		76CF77581B5D7DAD00A2FCC8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		76CF775B1B5D7E3D00A2FCC8 /* Voronoi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voronoi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +159,7 @@
 		76CF769F1B5C379B00A2FCC8 /* Voronoi */ = {
 			isa = PBXGroup;
 			children = (
+				76CF775B1B5D7E3D00A2FCC8 /* Voronoi.swift */,
 				76CF76FA1B5D74E800A2FCC8 /* Graph */,
 				76CF76FF1B5D74E800A2FCC8 /* Result */,
 				76CF77021B5D74E800A2FCC8 /* Structures */,
@@ -172,7 +173,6 @@
 				76CF76FB1B5D74E800A2FCC8 /* Edge.swift */,
 				76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */,
 				76CF76FD1B5D74E800A2FCC8 /* Site.swift */,
-				76CF76FE1B5D74E800A2FCC8 /* Voronoi.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 				76CF773A1B5D798300A2FCC8 /* Utilities.swift in Sources */,
 				76CF77501B5D7BF500A2FCC8 /* Table.swift in Sources */,
 				76CF77491B5D7B6D00A2FCC8 /* Orientation.swift in Sources */,
-				76CF770D1B5D74E800A2FCC8 /* Voronoi.swift in Sources */,
+				76CF775C1B5D7E3D00A2FCC8 /* Voronoi.swift in Sources */,
 				76CF77341B5D798300A2FCC8 /* Perlin1D.swift in Sources */,
 				76CF77521B5D7C0800A2FCC8 /* Matrix.swift in Sources */,
 				76CF77351B5D798300A2FCC8 /* Perlin2D.swift in Sources */,

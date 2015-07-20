@@ -31,9 +31,9 @@
 		76CF774E1B5D7BC500A2FCC8 /* GLKVector2+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF774C1B5D7BC500A2FCC8 /* GLKVector2+Internal.swift */; };
 		76CF77501B5D7BF500A2FCC8 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF774F1B5D7BF500A2FCC8 /* Table.swift */; };
 		76CF77521B5D7C0800A2FCC8 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77511B5D7C0800A2FCC8 /* Matrix.swift */; };
-		76CF77591B5D7DAD00A2FCC8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 76CF77571B5D7DAD00A2FCC8 /* LICENSE */; };
-		76CF775A1B5D7DAD00A2FCC8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77581B5D7DAD00A2FCC8 /* README.md */; };
 		76CF775C1B5D7E3D00A2FCC8 /* Voronoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF775B1B5D7E3D00A2FCC8 /* Voronoi.swift */; };
+		76CF775F1B5D7EB200A2FCC8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 76CF775D1B5D7EB200A2FCC8 /* LICENSE */; };
+		76CF77601B5D7EB200A2FCC8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 76CF775E1B5D7EB200A2FCC8 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,9 +74,9 @@
 		76CF774C1B5D7BC500A2FCC8 /* GLKVector2+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GLKVector2+Internal.swift"; sourceTree = "<group>"; };
 		76CF774F1B5D7BF500A2FCC8 /* Table.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		76CF77511B5D7C0800A2FCC8 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
-		76CF77571B5D7DAD00A2FCC8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		76CF77581B5D7DAD00A2FCC8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		76CF775B1B5D7E3D00A2FCC8 /* Voronoi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voronoi.swift; sourceTree = "<group>"; };
+		76CF775D1B5D7EB200A2FCC8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		76CF775E1B5D7EB200A2FCC8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +132,8 @@
 		76CF76861B5C376D00A2FCC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				76CF77571B5D7DAD00A2FCC8 /* LICENSE */,
-				76CF77581B5D7DAD00A2FCC8 /* README.md */,
+				76CF775D1B5D7EB200A2FCC8 /* LICENSE */,
+				76CF775E1B5D7EB200A2FCC8 /* README.md */,
 				76CF76871B5C376D00A2FCC8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -328,7 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76CF77591B5D7DAD00A2FCC8 /* LICENSE in Resources */,
+				76CF775F1B5D7EB200A2FCC8 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +354,7 @@
 				76CF77361B5D798300A2FCC8 /* Perlin3D.swift in Sources */,
 				76CF774E1B5D7BC500A2FCC8 /* GLKVector2+Internal.swift in Sources */,
 				76CF77481B5D7B6D00A2FCC8 /* LineEquation.swift in Sources */,
-				76CF775A1B5D7DAD00A2FCC8 /* README.md in Sources */,
+				76CF77601B5D7EB200A2FCC8 /* README.md in Sources */,
 				76CF77121B5D74E800A2FCC8 /* SiteList.swift in Sources */,
 				76CF773A1B5D798300A2FCC8 /* Utilities.swift in Sources */,
 				76CF77501B5D7BF500A2FCC8 /* Table.swift in Sources */,

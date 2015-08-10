@@ -17,7 +17,7 @@ public class Voronoi {
     
     public let bounds: CGRect
     
-    init(points: [CGPoint], bounds: CGRect) {
+    public init(points: [CGPoint], bounds: CGRect) {
         self.bounds = bounds
         siteList = SiteList(points: points)
         

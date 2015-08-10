@@ -41,7 +41,7 @@ internal class Halfedge {
     }
     
     internal class func seed() -> Halfedge {
-        return Halfedge(edge: nil, orientation: .Undefined)
+        return Halfedge(edge: nil, orientation: .Left)
     }
 }
 

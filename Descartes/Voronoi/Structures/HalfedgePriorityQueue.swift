@@ -63,11 +63,6 @@ internal extension HalfedgePriorityQueue {
         let index = bucket(halfedge)
         
         if halfedge.actualPoint != nil {
-            /*
-            FIXME: Shouldnt this be halfedge.orientation != .Undefined
-            ie isnt this to stop removal of our seed-halfedges in the hash?
-            */
-            
             var previous = hash[index]
             while previous?.next !== halfedge {
                 previous = previous?.next

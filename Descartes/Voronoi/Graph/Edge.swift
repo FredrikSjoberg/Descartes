@@ -54,7 +54,6 @@ internal extension Edge {
         switch orientation {
         case let .Left: return leftSite
         case let .Right: return rightSite
-        case let .Undefined: assert(false, "Orientation .Undefined is not valid")
         }
     }
 }

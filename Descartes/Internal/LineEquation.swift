@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreGraphics
+
 internal struct LineEquation {
     
     // format: ax + by = c

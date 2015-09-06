@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 internal struct TransformedVertex {
     internal let actualPoint: CGPoint

@@ -131,19 +131,19 @@ internal extension Voronoi {
                                 return true
                         }
                         else {
-                            println("Warning: processCircleEvent: Halfedge(s) llbnd &&/|| rrbnd not found")
+                            print("Warning: processCircleEvent: Halfedge(s) llbnd &&/|| rrbnd not found")
                         }
                     }
                     else {
-                        println("Warning: processCircleEvent: lbnd has no actual point")
+                        print("Warning: processCircleEvent: lbnd has no actual point")
                     }
                 }
                 else {
-                    println("Warning: processCircleEvent: rightNeighbor not found for lbnd")
+                    print("Warning: processCircleEvent: rightNeighbor not found for lbnd")
                 }
             }
             else {
-                println("Warning: processCircleEvent: No halfedge to pop")
+                print("Warning: processCircleEvent: No halfedge to pop")
             }
         }
         return false

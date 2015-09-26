@@ -32,7 +32,7 @@ public struct Perlin1D {
             g1[i] = generateRandom
         }
         
-        for i in reverse(0..<B) {
+        for i in (0..<B).reverse() {
             let j = Int(rand()) % B
             swap(&p[i], &p[j])
         }
@@ -49,7 +49,7 @@ public extension Perlin1D {
         var amp = amplitude
         var vec = value*frequency
         var result: Float = 0
-        for i in 0..<octaves {
+        for _ in 0..<octaves {
             result += generate1DNoise(vec)*amp
             vec = vec*2
             amp *= 0.5

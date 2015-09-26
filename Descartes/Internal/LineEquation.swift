@@ -87,7 +87,7 @@ internal extension LineEquation {
     yMax: dependant on LineI(x=[0,0.5]) and LineII(x=[0.5,0.7])
     
     */
-    internal func clipVertices(#point0: CGPoint?, point1: CGPoint?, rect: CGRect) -> (v0: CGPoint, v1: CGPoint)? {
+    internal func clipVertices(point0 point0: CGPoint?, point1: CGPoint?, rect: CGRect) -> (v0: CGPoint, v1: CGPoint)? {
         struct Bounds {
             let xmin: Float
             let xmax: Float

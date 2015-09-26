@@ -32,7 +32,7 @@ internal struct SiteList {
 
 internal extension SiteList {
     private mutating func sort() {
-        sites.sort{ Site.compareYThenX($0, site1: $1) }
+        sites.sortInPlace{ Site.compareYThenX($0, site1: $1) }
         sorted = true
         currentIndex = 0
     }
@@ -42,8 +42,8 @@ internal extension SiteList {
         
         if !sorted { sort() }
         
-        let xmin = minElement(sites.map{ $0.point.x })
-        let xmax = maxElement(sites.map{ $0.point.x })
+        let xmin = sites.map{ $0.point.x }.minElement()!
+        let xmax = sites.map{ $0.point.x }.maxElement()!
         
         // Sites are allready sorted on y
         let ymin = sites[0].point.y

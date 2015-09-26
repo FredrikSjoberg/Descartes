@@ -24,7 +24,7 @@ public struct Perlin2D {
         self.amplitude = amplitude
         self.seed = seed
         
-//        srand48(seed)
+        //        srand48(seed)
         srand(UInt32(seed))
         
         for i in 0..<B {
@@ -32,7 +32,7 @@ public struct Perlin2D {
             g2[i] = CGPoint(x: generateRandom, y: generateRandom).normalized
         }
         
-        for i in reverse(0..<B) {
+        for i in (0..<B).reverse() {
             let j = Int(rand()) % B
             swap(&p[i], &p[j])
         }
@@ -49,7 +49,7 @@ public extension Perlin2D {
         var amp = amplitude
         var vec = point*frequency
         var result: Float = 0
-        for i in 0..<octaves {
+        for _ in 0..<octaves {
             result += generate2DNoise(vec)*amp
             vec = vec*2
             amp *= 0.5

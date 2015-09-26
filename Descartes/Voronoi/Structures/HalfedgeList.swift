@@ -43,7 +43,7 @@ internal struct HalfedgeList {
         }
         
         if let halfedge = hash[bucket] {
-            if contains(deletedQueue, halfedge) {
+            if deletedQueue.contains(halfedge) {
                 hash[bucket] = nil
                 return nil
             }
@@ -83,7 +83,7 @@ internal extension HalfedgeList {
                 }
                 
                 if up == hashSize && down == 0 {
-                    println("Warning: leftNeighbor:\(point) | Unable to find a halfEdge in the hash")
+                    print("Warning: leftNeighbor:\(point) | Unable to find a halfEdge in the hash")
                     // Unable to find a halfEdge in the hash
                     break
                 }
@@ -99,7 +99,7 @@ internal extension HalfedgeList {
                     else { break }
                 }
                 if let next = result.leftNeighbor { result = next }
-                else { println("Note: Linear search leftNeighbor is nil") }
+                else { print("Note: Linear search leftNeighbor is nil") }
             }
             else {
                 // Left

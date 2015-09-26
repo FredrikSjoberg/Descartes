@@ -33,7 +33,7 @@ public struct Perlin3D {
             g3[i] = GLKVector3Normalize(GLKVector3Make(generateRandom, generateRandom, generateRandom))
         }
         
-        for i in reverse(0..<B) {
+        for i in (0..<B).reverse() {
             let j = Int(rand()) % B
             swap(&p[i], &p[j])
         }
@@ -50,7 +50,7 @@ public extension Perlin3D {
         var amp = amplitude
         var vec = GLKVector3MultiplyScalar(vector, frequency)
         var result: Float = 0
-        for i in 0..<octaves {
+        for _ in 0..<octaves {
             result += generate3DNoise(vec)*amp
             vec = GLKVector3MultiplyScalar(vec, 2)
             amp *= 0.5

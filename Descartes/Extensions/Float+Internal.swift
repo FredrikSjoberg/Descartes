@@ -15,7 +15,7 @@ internal extension Float {
 }
 
 internal extension Float {
-    internal func lerp(#a: Float, b: Float) -> Float {
+    internal func lerp(a a: Float, b: Float) -> Float {
         return (a + self*(b - a))
     }
 }

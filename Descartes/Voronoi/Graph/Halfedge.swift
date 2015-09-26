@@ -139,7 +139,7 @@ internal extension Halfedge {
         }
         else {
             // FIXME: What happens if no edge is attached to this halfedge? Can we use transformedVertex?
-            println("Warning: isLeftOf:\(point) | No edge assigned to Halfedge")
+            print("Warning: isLeftOf:\(point) | No edge assigned to Halfedge")
             return false
         }
     }

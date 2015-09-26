@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 internal extension CGPoint {
     internal init(x: Float, y: Float) {

@@ -29,18 +29,16 @@ public class Voronoi {
 
 internal extension Voronoi {
     private func fortunesAlgorithm() {
-        if let bottomMostSite = siteList.next() {
-            var newSite = siteList.next()
+        var newSite = siteList.next()
+        
+        while true {
+            newSite = processSiteEvent(newSite)
+            let circleEventProcessed = processCircleEvent()
             
-            while true {
-                newSite = processSiteEvent(newSite)
-                let circleEventProcessed = processCircleEvent()
-                
-                if newSite == nil && !circleEventProcessed {
-                    // We are done
-                    // No more siteList has sites to process AND priorityQueue is empty
-                    break
-                }
+            if newSite == nil && !circleEventProcessed {
+                // We are done
+                // No more siteList has sites to process AND priorityQueue is empty
+                break
             }
         }
     }

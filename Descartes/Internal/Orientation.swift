@@ -14,8 +14,8 @@ internal enum Orientation {
     
     internal var opposite: Orientation {
         switch self {
-        case let .Left: return .Right
-        case let .Right: return .Left
+        case .Left: return .Right
+        case .Right: return .Left
         }
     }
 }

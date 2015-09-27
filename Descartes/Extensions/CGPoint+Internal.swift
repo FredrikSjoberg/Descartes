@@ -47,7 +47,6 @@ extension CGPoint : Hashable {
     }
 }
 
-extension CGPoint : Equatable { }
 public func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
     return CGPointEqualToPoint(lhs, rhs)
 }

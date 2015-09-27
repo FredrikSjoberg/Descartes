@@ -52,8 +52,8 @@ internal extension Edge {
 internal extension Edge {
     internal func site(orientation: Orientation) -> Site {
         switch orientation {
-        case let .Left: return leftSite
-        case let .Right: return rightSite
+        case .Left: return leftSite
+        case .Right: return rightSite
         }
     }
 }

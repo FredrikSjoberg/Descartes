@@ -29,8 +29,6 @@ public class Edge {
         return clippedVertices != nil
     }
     
-/*    init(left: Site, right: Site, index: UInt) {
-        self.index = index*/
     init(left: Site, right: Site) {
         leftSite = left
         rightSite = right

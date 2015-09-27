@@ -16,13 +16,6 @@ public class Site {
     init(point: CGPoint) {
         self.point = point
     }
-/*    public let index: UInt
-    
-    init(point: CGPoint, index: UInt) {
-        self.point = point
-        self.index = index
-    }
-*/
 }
 
 internal extension Site {

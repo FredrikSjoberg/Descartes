@@ -24,6 +24,7 @@ public class Voronoi {
         let dataBounds = siteList.siteBounds()
         priorityQueue = HalfedgePriorityQueue(bounds: dataBounds, numSites: siteList.count)
         halfedgeList = HalfedgeList(bounds: dataBounds, numSites: siteList.count)
+        fortunesAlgorithm()
     }
 }
 

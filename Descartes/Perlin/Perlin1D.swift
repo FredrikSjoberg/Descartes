@@ -56,6 +56,11 @@ public extension Perlin1D {
         }
         return result
     }
+    
+    /// Returns a value between [0, 1] regardless of the amplitude used
+    public func normalizedNoise(value: Float) -> Float {
+        return (noise(value) + amplitude)/(2*amplitude)
+    }
 }
 
 private extension Perlin1D {

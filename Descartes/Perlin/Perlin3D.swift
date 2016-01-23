@@ -61,6 +61,16 @@ public extension Perlin3D {
     public func noise(vector: SCNVector3) -> Float {
         return noise(SCNVector3ToGLKVector3(vector))
     }
+    
+    /// Returns a value between [0, 1] regardless of the amplitude used
+    public func normalizedNoise(vector: GLKVector3) -> Float {
+        return (noise(vector) + amplitude)/(2*amplitude)
+    }
+    
+    /// Returns a value between [0, 1] regardless of the amplitude used
+    public func normalizedNoise(vector: SCNVector3) -> Float {
+        return normalizedNoise(SCNVector3ToGLKVector3(vector))
+    }
 }
 
 private extension Perlin3D {

@@ -60,6 +60,16 @@ public extension Perlin2D {
     public func noise(vector: GLKVector2) -> Float {
         return noise(vector.cgPoint)
     }
+    
+    /// Returns a value between [0, 1] regardless of the amplitude used
+    public func normalizedNoise(point: CGPoint) -> Float {
+        return (noise(point) + amplitude)/(2*amplitude)
+    }
+    
+    /// Returns a value between [0, 1] regardless of the amplitude used
+    public func normalizedNoise(vector: GLKVector2) -> Float {
+        return normalizedNoise(vector.cgPoint)
+    }
 }
 
 private extension Perlin2D {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 internal struct SiteList {
     private var sorted: Bool = false

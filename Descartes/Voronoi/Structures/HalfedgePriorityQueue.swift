@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 internal struct HalfedgePriorityQueue {
     private let ymin: Float

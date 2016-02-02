@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 internal class Halfedge {
     internal weak var next: Halfedge?

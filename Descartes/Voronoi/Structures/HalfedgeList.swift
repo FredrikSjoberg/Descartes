@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 internal struct HalfedgeList {
     private let xmin: Float

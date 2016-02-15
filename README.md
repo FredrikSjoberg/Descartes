@@ -1,6 +1,7 @@
-Descartes
+
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
+###Descartes
 =========
 
 Descartes is a µ-framework written entirely in Swift and loosely focused on Computational Geometry. It implements some concepts, methods and algorithms I find useful or interesting.

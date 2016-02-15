@@ -11,11 +11,7 @@ import Foundation
 import Foundation
 import CoreGraphics
 
-internal class EventQueue { // (Old priorityQueue)
-    // Q
-    // Priority queue, where priority is y-coordinate
-    // Stores all CircleEvents
-    
+internal class EventQueue {
     private var heap: Heap<Halfedge> = Heap{ $0.intersectionVertex!.yStar < $1.intersectionVertex!.yStar } // NOTE: By design, all halfedges added to the EventQueue will have an intersectionVertex
     
     

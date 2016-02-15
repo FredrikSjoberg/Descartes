@@ -12,13 +12,11 @@ import CoreGraphics
 internal class Halfedge : Equatable {
     internal weak var left: Halfedge?
     internal weak var right: Halfedge?
-    internal weak var next: Halfedge?
     
     internal let edge: Edge?
     internal let orientation: Orientation?
     
     internal var intersectionVertex: TransformedVertex?
-    
     
     internal init(edge: Edge, orientation: Orientation) {
         self.edge = edge
@@ -33,7 +31,6 @@ internal class Halfedge : Equatable {
     internal class func dummy() -> Halfedge {
         return Halfedge()
     }
-    
     
     internal func intersects(other: Halfedge) -> CGPoint? {
         guard let e0 = edge, e1 = other.edge else { return nil }

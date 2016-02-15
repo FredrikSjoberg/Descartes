@@ -14,11 +14,11 @@ internal class BeachLine {
     private var rightEnd: Halfedge
     private var hash: [Halfedge?]
     
-    let xmin: CGFloat
-    let xdelta: CGFloat
-    let hashSize: Int
+    private let xmin: CGFloat
+    private let xdelta: CGFloat
+    private let hashSize: Int
     
-    init(xmin: CGFloat, xdelta: CGFloat, size: Int) {
+    internal init(xmin: CGFloat, xdelta: CGFloat, size: Int) {
         self.xmin = xmin
         self.xdelta = xdelta
         hashSize = 2*size

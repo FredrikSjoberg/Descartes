@@ -9,23 +9,23 @@
 import Foundation
 
 internal struct Heap<Element: Equatable> {
-    let comparator: (Element, Element) -> Bool
+    internal let comparator: (Element, Element) -> Bool
     private var contents: [Element]
     
-    var isEmpty: Bool {
+    internal var isEmpty: Bool {
         return contents.isEmpty
     }
     
-    func contains(element: Element) -> Bool {
+    internal func contains(element: Element) -> Bool {
         return contents.contains(element)
     }
     
-    init(comparator: (Element, Element) -> Bool) {
+    internal init(comparator: (Element, Element) -> Bool) {
         self.comparator = comparator
         contents = []
     }
     
-    init(comparator: (Element, Element) -> Bool, contents: [Element]) {
+    internal init(comparator: (Element, Element) -> Bool, contents: [Element]) {
         self.comparator = comparator
         self.contents = []
         contents.forEach{ push($0) }

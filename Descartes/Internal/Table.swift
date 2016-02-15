@@ -14,7 +14,7 @@ internal struct Table {
     internal let r0: Float
     internal let r1: Float
     
-    init(value: Float) {
+    internal init(value: Float) {
         let t = value + Float(N)
         b0 = Int(t) & BM
         b1 = (b0+1) & BM

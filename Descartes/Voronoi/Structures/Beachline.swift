@@ -12,32 +12,12 @@ import CoreGraphics
 internal class BeachLine {
     private var leftEnd: Halfedge
     private var rightEnd: Halfedge
-    private var hash: [Halfedge?]
     
-    private let xmin: CGFloat
-    private let xdelta: CGFloat
-    private let hashSize: Int
-    
-    internal init(xmin: CGFloat, xdelta: CGFloat, size: Int) {
-        self.xmin = xmin
-        self.xdelta = xdelta
-        hashSize = 2*size
-        
-        hash = Array(count: hashSize, repeatedValue: nil)
+    internal init() {
         leftEnd = Halfedge.dummy()
         rightEnd = Halfedge.dummy()
         leftEnd.right = rightEnd
         rightEnd.left = leftEnd
-        hash[0] = leftEnd
-        hash[hash.count-1] = rightEnd
-    }
-    
-    private func getHash(value: Int) -> Halfedge? {
-        guard value >= 0 && value < hashSize else {
-            return nil
-        }
-        
-        return hash[value]
     }
     
     internal func insert(halfedge: Halfedge, rightOf right: Halfedge) {
@@ -56,12 +36,6 @@ internal class BeachLine {
     }
     
     internal func leftNeighbor(point: CGPoint) -> Halfedge {
-        /*let bucket = Int( (point.x - xmin)/xdelta * CGFloat(hashSize) )
-        
-        let b = bucket.clamp(0, hashSize-1)
-        var halfedge = getHash(b)
-        */
-        
         var current = leftEnd
         while current != rightEnd && current.isLeftOf(point) {
             if current.right != nil {

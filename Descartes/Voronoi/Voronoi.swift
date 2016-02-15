@@ -22,10 +22,7 @@ public class Voronoi {
         self.bounds = bounds
         siteList = SiteList(points: points)
         eventQueue = EventQueue()
-        
-        let xbounds = siteList.xbounds
-        let siteCount = sqrtf(Float(siteList.count)+4)
-        beachLine = BeachLine(xmin: xbounds.min, xdelta: xbounds.delta, size: Int(siteCount))
+        beachLine = BeachLine()
         
         bottomMostSite = siteList.pop()! // TODO: Implicit unwrapping is terrible!
         

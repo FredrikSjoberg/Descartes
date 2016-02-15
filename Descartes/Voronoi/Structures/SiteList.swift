@@ -44,13 +44,6 @@ internal class SiteList {
         currentIndex += 1
         return site
     }
-    
-    internal var xbounds: (min: CGFloat, delta: CGFloat) {
-        let t = sites.map{ $0.point.x }
-        let min = t.minElement()!
-        let max = t.maxElement()!
-        return (min, max-min)
-    }
 }
 
 extension SiteList {

@@ -15,8 +15,6 @@
 		76CF770C1B5D74E800A2FCC8 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FD1B5D74E800A2FCC8 /* Site.swift */; };
 		76CF770E1B5D74E800A2FCC8 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77001B5D74E800A2FCC8 /* Line.swift */; };
 		76CF770F1B5D74E800A2FCC8 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77011B5D74E800A2FCC8 /* Node.swift */; };
-		76CF77101B5D74E800A2FCC8 /* HalfedgeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77031B5D74E800A2FCC8 /* HalfedgeList.swift */; };
-		76CF77111B5D74E800A2FCC8 /* HalfedgePriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77041B5D74E800A2FCC8 /* HalfedgePriorityQueue.swift */; };
 		76CF77121B5D74E800A2FCC8 /* SiteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF77051B5D74E800A2FCC8 /* SiteList.swift */; };
 		76CF77341B5D798300A2FCC8 /* Perlin1D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF772C1B5D798300A2FCC8 /* Perlin1D.swift */; };
 		76CF77351B5D798300A2FCC8 /* Perlin2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF772D1B5D798300A2FCC8 /* Perlin2D.swift */; };
@@ -34,6 +32,11 @@
 		76CF775C1B5D7E3D00A2FCC8 /* Voronoi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF775B1B5D7E3D00A2FCC8 /* Voronoi.swift */; };
 		76CF775F1B5D7EB200A2FCC8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 76CF775D1B5D7EB200A2FCC8 /* LICENSE */; };
 		76CF77601B5D7EB200A2FCC8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 76CF775E1B5D7EB200A2FCC8 /* README.md */; };
+		76D50A881C7261D300DBB660 /* EventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50A871C7261D300DBB660 /* EventQueue.swift */; };
+		76D50A8C1C72622700DBB660 /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50A891C72622700DBB660 /* Heap.swift */; };
+		76D50A8D1C72622700DBB660 /* HeapType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50A8A1C72622700DBB660 /* HeapType.swift */; };
+		76D50A8E1C72622700DBB660 /* QueueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50A8B1C72622700DBB660 /* QueueType.swift */; };
+		76D50A901C72624F00DBB660 /* Beachline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50A8F1C72624F00DBB660 /* Beachline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +61,6 @@
 		76CF76FD1B5D74E800A2FCC8 /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		76CF77001B5D74E800A2FCC8 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		76CF77011B5D74E800A2FCC8 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		76CF77031B5D74E800A2FCC8 /* HalfedgeList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfedgeList.swift; sourceTree = "<group>"; };
-		76CF77041B5D74E800A2FCC8 /* HalfedgePriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfedgePriorityQueue.swift; sourceTree = "<group>"; };
 		76CF77051B5D74E800A2FCC8 /* SiteList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteList.swift; sourceTree = "<group>"; };
 		76CF772C1B5D798300A2FCC8 /* Perlin1D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perlin1D.swift; sourceTree = "<group>"; };
 		76CF772D1B5D798300A2FCC8 /* Perlin2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perlin2D.swift; sourceTree = "<group>"; };
@@ -77,6 +78,11 @@
 		76CF775B1B5D7E3D00A2FCC8 /* Voronoi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voronoi.swift; sourceTree = "<group>"; };
 		76CF775D1B5D7EB200A2FCC8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		76CF775E1B5D7EB200A2FCC8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		76D50A871C7261D300DBB660 /* EventQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventQueue.swift; sourceTree = "<group>"; };
+		76D50A891C72622700DBB660 /* Heap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
+		76D50A8A1C72622700DBB660 /* HeapType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeapType.swift; sourceTree = "<group>"; };
+		76D50A8B1C72622700DBB660 /* QueueType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueType.swift; sourceTree = "<group>"; };
+		76D50A8F1C72624F00DBB660 /* Beachline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beachline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,9 +195,9 @@
 		76CF77021B5D74E800A2FCC8 /* Structures */ = {
 			isa = PBXGroup;
 			children = (
-				76CF77031B5D74E800A2FCC8 /* HalfedgeList.swift */,
-				76CF77041B5D74E800A2FCC8 /* HalfedgePriorityQueue.swift */,
 				76CF77051B5D74E800A2FCC8 /* SiteList.swift */,
+				76D50A871C7261D300DBB660 /* EventQueue.swift */,
+				76D50A8F1C72624F00DBB660 /* Beachline.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -234,6 +240,9 @@
 				76CF77471B5D7B6D00A2FCC8 /* TransformedVertex.swift */,
 				76CF774F1B5D7BF500A2FCC8 /* Table.swift */,
 				76CF77511B5D7C0800A2FCC8 /* Matrix.swift */,
+				76D50A891C72622700DBB660 /* Heap.swift */,
+				76D50A8A1C72622700DBB660 /* HeapType.swift */,
+				76D50A8B1C72622700DBB660 /* QueueType.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -353,23 +362,26 @@
 				76CF770F1B5D74E800A2FCC8 /* Node.swift in Sources */,
 				76CF774D1B5D7BC500A2FCC8 /* Float+Internal.swift in Sources */,
 				76CF770B1B5D74E800A2FCC8 /* Halfedge.swift in Sources */,
+				76D50A8E1C72622700DBB660 /* QueueType.swift in Sources */,
 				76CF77361B5D798300A2FCC8 /* Perlin3D.swift in Sources */,
 				76CF774E1B5D7BC500A2FCC8 /* GLKVector2+Internal.swift in Sources */,
 				76CF77481B5D7B6D00A2FCC8 /* LineEquation.swift in Sources */,
 				76CF77601B5D7EB200A2FCC8 /* README.md in Sources */,
 				76CF77121B5D74E800A2FCC8 /* SiteList.swift in Sources */,
+				76D50A881C7261D300DBB660 /* EventQueue.swift in Sources */,
 				76CF773A1B5D798300A2FCC8 /* Utilities.swift in Sources */,
+				76D50A901C72624F00DBB660 /* Beachline.swift in Sources */,
 				76CF77501B5D7BF500A2FCC8 /* Table.swift in Sources */,
 				76CF77491B5D7B6D00A2FCC8 /* Orientation.swift in Sources */,
 				76CF775C1B5D7E3D00A2FCC8 /* Voronoi.swift in Sources */,
+				76D50A8D1C72622700DBB660 /* HeapType.swift in Sources */,
 				76CF77341B5D798300A2FCC8 /* Perlin1D.swift in Sources */,
 				76CF77521B5D7C0800A2FCC8 /* Matrix.swift in Sources */,
 				76CF77351B5D798300A2FCC8 /* Perlin2D.swift in Sources */,
 				76CF770E1B5D74E800A2FCC8 /* Line.swift in Sources */,
 				76CF770A1B5D74E800A2FCC8 /* Edge.swift in Sources */,
-				76CF77111B5D74E800A2FCC8 /* HalfedgePriorityQueue.swift in Sources */,
+				76D50A8C1C72622700DBB660 /* Heap.swift in Sources */,
 				76CF77421B5D7AE400A2FCC8 /* CGPoint+Internal.swift in Sources */,
-				76CF77101B5D74E800A2FCC8 /* HalfedgeList.swift in Sources */,
 				76CF774A1B5D7B6D00A2FCC8 /* TransformedVertex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

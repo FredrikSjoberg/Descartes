@@ -15,6 +15,11 @@ internal struct TransformedVertex {
     // Vertex's y coordinate in transformed Voronoi V* space
     internal let yStar: Float
     
+    internal init(vertex: CGPoint, relativeTo site: Site) {
+        actualPoint = vertex
+        yStar = Float(vertex.y) + vertex.distance(site.point)
+    }
+    
     internal var transformedPoint: CGPoint {
         return CGPoint(x: Float(actualPoint.x), y: yStar)
     }

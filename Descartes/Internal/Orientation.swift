@@ -3,7 +3,7 @@
 //  Descartes
 //
 //  Created by Fredrik Sjöberg on 2015-07-18.
-//  Copyright (c) 2015 FredrikSjoberg. All rights reserved.
+//  Copyright (c) 2015 Fredrik Sjoberg. All rights reserved.
 //
 
 import Foundation

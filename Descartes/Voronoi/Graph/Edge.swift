@@ -3,29 +3,29 @@
 //  Descartes
 //
 //  Created by Fredrik Sjöberg on 2015-07-17.
-//  Copyright (c) 2015 FredrikSjoberg. All rights reserved.
+//  Copyright (c) 2015 Fredrik Sjoberg. All rights reserved.
 //
 
 import Foundation
 import CoreGraphics
 
-public class Edge {
-//    internal let index: UInt
-    internal unowned let leftSite: Site
+class Edge {
     internal unowned let rightSite: Site
+    internal unowned let leftSite: Site
     
     internal let equation: LineEquation
     
-    // If one of the Vertices are nil, the edge extends to infinity
-    private var vertices: (left: CGPoint?, right: CGPoint?)
+    private var _leftVertex: CGPoint?
     internal var leftVertex: CGPoint? {
-        return vertices.left
+        return _leftVertex
     }
+    private var _rightVertex: CGPoint?
     internal var rightVertex: CGPoint? {
-        return vertices.right
+        return _rightVertex
     }
+    
     // These are the actual vertices after processing
-    internal var clippedVertices: (left: CGPoint, right: CGPoint)?
+    internal var clippedVertices: (v0: CGPoint, v1: CGPoint)?
     internal var visible: Bool {
         return clippedVertices != nil
     }
@@ -36,54 +36,34 @@ public class Edge {
         
         equation = LineEquation(p0: leftSite.point, p1: rightSite.point)
         
-        leftSite.addEdge(self)
-        rightSite.addEdge(self)
+        leftSite.edges.append(self)
+        rightSite.edges.append(self)
     }
-}
-
-internal extension Edge {
-    internal func setVertex(vertex: CGPoint, orientation: Orientation) {
-        if orientation == .Left { vertices.left = vertex }
-        else if orientation == .Right { vertices.right = vertex }
-    }
-}
-
-internal extension Edge {
+    
     internal func site(orientation: Orientation) -> Site {
         switch orientation {
         case .Left: return leftSite
         case .Right: return rightSite
         }
     }
-}
-
-internal extension Edge {
+    
+    internal func setVertex(vertex: CGPoint, orientation: Orientation) {
+        switch orientation {
+        case .Left: _leftVertex = vertex
+        case .Right: _rightVertex = vertex
+        }
+    }
+    
+    
     internal func clipVertices(rect: CGRect) {
-        func determinePoints() -> (v0: CGPoint?, v1: CGPoint?) {
-            if equation.a == 1 && equation.b >= 0 {
-                return (self.rightVertex, self.leftVertex)
-            }
-            else {
-                return (self.leftVertex, self.rightVertex)
-            }
-        }
+        let vertices = (equation.a == 1 && equation.b >= 0 ? (rightVertex, leftVertex) : (leftVertex, rightVertex))
         
-        let vertices = determinePoints()
-        
-        let result = equation.clipVertices(point0: vertices.v0, point1: vertices.v1, rect: rect)
-        
-        if let clipped = result {
-            if equation.a == 1 && equation.b >= 0 {
-                clippedVertices = (left: clipped.v0, right: clipped.v1)
-            }
-            else {
-                clippedVertices = (left: clipped.v1, right: clipped.v0)
-            }
-        }
+        let result = equation.clipVertices(point0: vertices.0, point1: vertices.1, rect: rect)
+        clippedVertices = result
     }
 }
 
-internal extension Edge {
+extension Edge {
     internal var dualGraph: Node {
         return Node(delaunay: delaunayLine, voronoi: voronoiEdge)
     }
@@ -94,8 +74,8 @@ internal extension Edge {
     
     internal var voronoiEdge: Line? {
         if let vertices = clippedVertices {
-            if !CGPointEqualToPoint(vertices.left, vertices.right) {
-                return Line(p0: vertices.left, p1: vertices.right)
+            if !CGPointEqualToPoint(vertices.v0, vertices.v1) {
+                return Line(p0: vertices.v0, p1: vertices.v1)
             }
         }
         return nil

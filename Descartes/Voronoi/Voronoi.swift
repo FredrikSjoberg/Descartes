@@ -18,7 +18,7 @@ public class Voronoi {
     let bottomMostSite: Site
     
     let bounds: CGRect
-    public init(points: [CGPoint], bounds: CGRect) throws {
+    public init(points: [CGPoint], bounds: CGRect) {
         self.bounds = bounds
         siteList = SiteList(points: points)
         eventQueue = EventQueue()
@@ -30,10 +30,10 @@ public class Voronoi {
         bottomMostSite = siteList.pop()! // TODO: Implicit unwrapping is terrible!
         
         // Run the algorithm
-        try fortunesAlgorithm()
+        fortunesAlgorithm()
     }
     
-    internal func fortunesAlgorithm() throws {
+    internal func fortunesAlgorithm() {
         // We now have an initial structure set up.
         // The third event to follow will also be a circleEvent.
         // From now on we might generate intersections

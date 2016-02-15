@@ -31,11 +31,6 @@ internal class SiteList {
         sites = arr.sort{ $0.point.compareYThenX($1.point) }
         locations = dict
         currentIndex = 0
-        
-        let bounds = CGRect(x: 0, y: 0, width: 2048, height: 2048)
-        sites.forEach{
-            print("\(bounds.contains($0.point)) : \($0.point)")
-        }
     }
     
     internal func peek() -> Site? {

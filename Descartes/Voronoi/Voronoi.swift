@@ -20,8 +20,9 @@ public class Voronoi {
     public let boundary: BoundaryType
     
     public init(points: [CGPoint], boundary: BoundaryType) {
+        let validPoints = points.filter{ boundary.contains($0) }
         self.boundary = boundary
-        siteList = SiteList(points: points)
+        siteList = SiteList(points: validPoints)
         eventQueue = EventQueue()
         beachLine = BeachLine()
         

@@ -40,7 +40,6 @@ public class Voronoi {
     
     private func fortunesAlgorithm() {
         // We now have an initial structure set up.
-        // The third event to follow will also be a circleEvent.
         // From now on we might generate intersections
         // Note: the eventQueue is still empty, as no intersections have been possible yet
         while true {

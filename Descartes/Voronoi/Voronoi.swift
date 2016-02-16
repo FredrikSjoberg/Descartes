@@ -15,7 +15,7 @@ public class Voronoi {
     private let siteList: SiteList
     private var edges: [Edge] = []
     private var halfedges: [Halfedge] = []
-    private let bottomMostSite: Site
+    private let bottomMostSite: Site!
     
     public let boundary: BoundaryType
     
@@ -25,10 +25,16 @@ public class Voronoi {
         eventQueue = EventQueue()
         beachLine = BeachLine()
         
-        bottomMostSite = siteList.pop()! // TODO: Implicit unwrapping is terrible!
-        
-        // Run the algorithm
-        fortunesAlgorithm()
+        if siteList.count > 0 {
+            bottomMostSite = siteList.pop()!
+            
+            // Run the algorithm
+            fortunesAlgorithm()
+        }
+        else {
+            // TODO: Slightly better than simply unwrapping, but not good!
+            bottomMostSite = nil
+        }
     }
     
     private func fortunesAlgorithm() {

@@ -34,8 +34,13 @@ internal extension CGPoint {
         if point0.x > point1.x { return false }
         return true
     }
+    
     internal func compareYThenX(point: CGPoint) -> Bool {
         return CGPoint.compareYThenX(self, point1: point)
+    }
+    
+    internal func perp(point: CGPoint) -> CGFloat {
+        return x*point.y - y*point.x
     }
 }
 
@@ -47,10 +52,19 @@ extension CGPoint : Hashable {
     }
 }
 
-public func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
+internal func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
     return CGPointEqualToPoint(lhs, rhs)
 }
 
 internal func * (point: CGPoint, value: Float) -> CGPoint {
     return CGPoint(x: point.x*CGFloat(value), y: point.y*CGFloat(value))
+}
+
+
+internal func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    return CGPoint(x: lhs.x+rhs.x, y: lhs.y+rhs.y)
+}
+
+internal func - (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
+    return CGPoint(x: lhs.x-rhs.x, y: lhs.y-rhs.y)
 }

@@ -22,8 +22,8 @@ class Site : Equatable {
         var set = Set<CGPoint>()
         for e in edges {
             if let vertices = e.clippedVertices {
-                set.insert(vertices.v0)
-                set.insert(vertices.v1)
+                set.insert(vertices.p0)
+                set.insert(vertices.p1)
             }
         }
         return set

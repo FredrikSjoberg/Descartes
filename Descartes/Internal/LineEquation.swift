@@ -9,14 +9,15 @@
 import Foundation
 import CoreGraphics
 
-internal struct LineEquation {
+public struct LineEquation {
     
     // format: ax + by = c
-    internal let a: CGFloat
-    internal let b: CGFloat
-    internal let c: CGFloat
+    public let a: CGFloat
+    public let b: CGFloat
+    public let c: CGFloat
     
-    internal init(p0: CGPoint, p1: CGPoint) {
+    /// Creates a Perpendicular line to the points p0 and p1, halfway between them
+    public init(p0: CGPoint, p1: CGPoint) {
         let dx = p1.x - p0.x
         let dy = p1.y - p0.y
         
@@ -33,18 +34,18 @@ internal struct LineEquation {
         }
     }
     
-    internal func determinant(eq: LineEquation) -> CGFloat {
+    public func determinant(eq: LineEquation) -> CGFloat {
         return (self.a * eq.b - self.b * eq.a)
     }
     
     // Lines are parallel if their determinant does not deviate more than some value (parallelEpsilon)
     private let parallelEpsilon: CGFloat = 1.0E-10
-    internal func isParallel(eq: LineEquation) -> Bool {
+    public func isParallel(eq: LineEquation) -> Bool {
         let det = determinant(eq)
         return (-parallelEpsilon < det && det < parallelEpsilon)
     }
     
-    internal func intersection(eq: LineEquation) -> CGPoint? {
+    public func intersects(eq: LineEquation) -> CGPoint? {
         if isParallel(eq) { return nil }
         let det = determinant(eq)
         let xIntersect = (c * eq.b - eq.c * b)/det
@@ -52,9 +53,8 @@ internal struct LineEquation {
         return CGPoint(x: xIntersect, y: yIntersect)
     }
 }
-
+/*
 internal extension LineEquation {
-    
     /*
     To generalize this into a polygon BoundingBox instead of a rectangle
     we need to have line-equations/edges that define the bounds.
@@ -87,7 +87,7 @@ internal extension LineEquation {
     yMax: dependant on LineI(x=[0,0.5]) and LineII(x=[0.5,0.7])
     
     */
-    internal func clipVertices(point0 point0: CGPoint?, point1: CGPoint?, rect: CGRect) -> (v0: CGPoint, v1: CGPoint)? {
+    internal func clipVertices(point0 point0: CGPoint?, point1: CGPoint?, rect: CGRect) -> Line? {
         let p0 = point0
         let p1 = point1
         
@@ -109,7 +109,6 @@ internal extension LineEquation {
             if y0 > ymax {
                 // Illegal value
                 return nil
-                //                throw VoronoiError.ClippedVertexOutsideBounds(point: p0, bounds: rect)
             }
             
             // 1.0x + By = c
@@ -127,7 +126,6 @@ internal extension LineEquation {
             if y1 < ymin {
                 // Illegal value
                 return nil
-                //                throw VoronoiError.ClippedVertexOutsideBounds(point: p1, bounds: rect)
             }
             
             // 1.0x + By = c
@@ -138,7 +136,6 @@ internal extension LineEquation {
             if ((x0 > xmax && x1 > xmax) || (x0 < xmin && x1 < xmin)) {
                 // Illegal value(s)
                 return nil
-                //                throw VoronoiError.LineOutsideBounds(v0: p0, v1: p1, bounds: rect)
             }
             
             if x0 > xmax {
@@ -159,7 +156,7 @@ internal extension LineEquation {
                 y1 = (c - x1)/b
             }
             
-            return (CGPoint(x: x0, y: y0), CGPoint(x: x1, y: y1))
+            return Line(p0: CGPoint(x: x0, y: y0), p1: CGPoint(x: x1, y: y1))
         }
         else { // b == 1 (see Lineswift)
             // x0
@@ -171,7 +168,6 @@ internal extension LineEquation {
                 if x0 > xmax {
                     // Illegal Value
                     return nil
-                    //                    throw VoronoiError.ClippedVertexOutsideBounds(point: p1, bounds: rect)
                 }
             }
             
@@ -190,7 +186,6 @@ internal extension LineEquation {
             if x1 < xmin {
                 // Illegal Value
                 return nil
-                //                throw VoronoiError.ClippedVertexOutsideBounds(point: p1, bounds: rect)
             }
             
             // Ax + 1.0y = c
@@ -201,7 +196,6 @@ internal extension LineEquation {
             if ((y0 > ymax && y1 > ymax) || (y0 < ymin && y1 < ymin)) {
                 // Illegal value(s)
                 return nil
-                //                throw VoronoiError.LineOutsideBounds(v0: p0, v1: p1, bounds: rect)
             }
             
             
@@ -223,7 +217,7 @@ internal extension LineEquation {
                 x1 = (c - y1)/a
             }
             
-            return (CGPoint(x: x0, y: y0), CGPoint(x: x1, y: y1))
+            return Line(p0: CGPoint(x: x0, y: y0), p1: CGPoint(x: x1, y: y1))
         }
     }
-}
+}*/

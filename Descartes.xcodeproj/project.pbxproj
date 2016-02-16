@@ -37,6 +37,8 @@
 		76D50A901C72624F00DBB660 /* Beachline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50A8F1C72624F00DBB660 /* Beachline.swift */; };
 		76D50A931C72673200DBB660 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 76D50A911C72673200DBB660 /* LICENSE */; };
 		76D50A941C72673200DBB660 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 76D50A921C72673200DBB660 /* README.md */; };
+		76D50AF11C737AFB00DBB660 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AF01C737AFB00DBB660 /* Segment.swift */; };
+		76D50AF31C73B1E200DBB660 /* Boundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AF21C73B1E200DBB660 /* Boundary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		76D50A8F1C72624F00DBB660 /* Beachline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beachline.swift; sourceTree = "<group>"; };
 		76D50A911C72673200DBB660 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		76D50A921C72673200DBB660 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		76D50AF01C737AFB00DBB660 /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		76D50AF21C73B1E200DBB660 /* Boundary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boundary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,7 @@
 			children = (
 				76CF77001B5D74E800A2FCC8 /* Line.swift */,
 				76CF77011B5D74E800A2FCC8 /* Node.swift */,
+				76D50AF01C737AFB00DBB660 /* Segment.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				76CF77051B5D74E800A2FCC8 /* SiteList.swift */,
 				76D50A871C7261D300DBB660 /* EventQueue.swift */,
 				76D50A8F1C72624F00DBB660 /* Beachline.swift */,
+				76D50AF21C73B1E200DBB660 /* Boundary.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 			files = (
 				76CF770C1B5D74E800A2FCC8 /* Site.swift in Sources */,
 				76CF77441B5D7B4000A2FCC8 /* Int+Internal.swift in Sources */,
+				76D50AF11C737AFB00DBB660 /* Segment.swift in Sources */,
 				76CF770F1B5D74E800A2FCC8 /* Node.swift in Sources */,
 				76CF774D1B5D7BC500A2FCC8 /* Float+Internal.swift in Sources */,
 				76D50A941C72673200DBB660 /* README.md in Sources */,
@@ -378,6 +385,7 @@
 				76CF77341B5D798300A2FCC8 /* Perlin1D.swift in Sources */,
 				76CF77521B5D7C0800A2FCC8 /* Matrix.swift in Sources */,
 				76CF77351B5D798300A2FCC8 /* Perlin2D.swift in Sources */,
+				76D50AF31C73B1E200DBB660 /* Boundary.swift in Sources */,
 				76CF770E1B5D74E800A2FCC8 /* Line.swift in Sources */,
 				76CF770A1B5D74E800A2FCC8 /* Edge.swift in Sources */,
 				76D50A8C1C72622700DBB660 /* Heap.swift in Sources */,

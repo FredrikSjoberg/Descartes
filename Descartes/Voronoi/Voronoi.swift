@@ -10,16 +10,17 @@ import Foundation
 import CoreGraphics
 
 public class Voronoi {
-    let eventQueue: EventQueue
-    let beachLine: BeachLine
-    let siteList: SiteList
-    var edges: [Edge] = []
-    var halfedges: [Halfedge] = []
-    let bottomMostSite: Site
+    private let eventQueue: EventQueue
+    private let beachLine: BeachLine
+    private let siteList: SiteList
+    private var edges: [Edge] = []
+    private var halfedges: [Halfedge] = []
+    private let bottomMostSite: Site
     
-    let bounds: CGRect
-    public init(points: [CGPoint], bounds: CGRect) {
-        self.bounds = bounds
+    public let boundary: BoundaryType
+    
+    public init(points: [CGPoint], boundary: BoundaryType) {
+        self.boundary = boundary
         siteList = SiteList(points: points)
         eventQueue = EventQueue()
         beachLine = BeachLine()
@@ -30,7 +31,7 @@ public class Voronoi {
         fortunesAlgorithm()
     }
     
-    internal func fortunesAlgorithm() {
+    private func fortunesAlgorithm() {
         // We now have an initial structure set up.
         // The third event to follow will also be a circleEvent.
         // From now on we might generate intersections
@@ -64,7 +65,7 @@ public class Voronoi {
             }
         }
         
-        edges.forEach{ $0.clipVertices(bounds) }
+        edges.forEach{ $0.clipVertices(boundary) }
     }
     
     /// Adds halfedges to the beachline

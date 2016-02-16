@@ -12,4 +12,9 @@ import CoreGraphics
 public struct Line {
     public let p0: CGPoint
     public let p1: CGPoint
+    
+    init(p0: CGPoint, p1: CGPoint) {
+        self.p0 = p0
+        self.p1 = p1
+    }
 }

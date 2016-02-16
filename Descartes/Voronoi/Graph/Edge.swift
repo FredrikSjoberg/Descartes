@@ -25,7 +25,7 @@ class Edge {
     }
     
     // These are the actual vertices after processing
-    internal var clippedVertices: (v0: CGPoint, v1: CGPoint)?
+    internal var clippedVertices: Line?
     internal var visible: Bool {
         return clippedVertices != nil
     }
@@ -55,11 +55,11 @@ class Edge {
     }
     
     
-    internal func clipVertices(rect: CGRect) {
+    internal func clipVertices(boundary: BoundaryType) {
         let vertices = (equation.a == 1 && equation.b >= 0 ? (rightVertex, leftVertex) : (leftVertex, rightVertex))
         
-        let result = equation.clipVertices(point0: vertices.0, point1: vertices.1, rect: rect)
-        clippedVertices = result
+        let segment = Segment(p0: vertices.0, p1: vertices.1, equation: equation)
+        clippedVertices = boundary.clipVertices(segment)
     }
 }
 
@@ -74,8 +74,8 @@ extension Edge {
     
     internal var voronoiEdge: Line? {
         if let vertices = clippedVertices {
-            if !CGPointEqualToPoint(vertices.v0, vertices.v1) {
-                return Line(p0: vertices.v0, p1: vertices.v1)
+            if !CGPointEqualToPoint(vertices.p0, vertices.p1) {
+                return Line(p0: vertices.p0, p1: vertices.p1)
             }
         }
         return nil

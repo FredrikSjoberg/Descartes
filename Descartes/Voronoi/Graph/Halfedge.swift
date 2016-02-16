@@ -36,7 +36,7 @@ internal class Halfedge : Equatable {
         guard let e0 = edge, e1 = other.edge else { return nil }
         guard e0.rightSite != e1.rightSite else { return nil }
         
-        guard let intersection = e0.equation.intersection(e1.equation) else { return nil }
+        guard let intersection = e0.equation.intersects(e1.equation) else { return nil }
         
         let reference = e0.rightSite.point.compareYThenX(e1.rightSite.point) ? (self, e0) : (other, e1)
         

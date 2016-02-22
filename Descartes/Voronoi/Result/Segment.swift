@@ -9,6 +9,8 @@
 import Foundation
 import CoreGraphics
 
+/// TODO: Switch names Segment<->Line to match conventions of a fixed vs unbounded (possibly) "line"
+/// https://www.khanacademy.org/math/basic-geo/basic-geo-lines/basic-geo-lines-rays-angles/v/lines-line-segments-and-rays
 public struct Segment {
     public let p0: CGPoint?
     public let p1: CGPoint?

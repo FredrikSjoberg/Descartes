@@ -178,4 +178,119 @@ public extension Voronoi {
         }
         return Set()
     }
+    
+    /// Returns a ConvexPolygon with edges surrounding the site (including boundary edges if any), or nil if no site is found.
+    public func cellAt(point: CGPoint) -> ConvexPolygon? {
+        guard boundary.contains(point) else { return nil }
+        guard let site = siteList.site(point) else { return nil }
+        
+        let voronoiEdges = site.edges.flatMap{ $0.voronoiEdge }
+        var queue = voronoiEdges
+        
+        // No edges? Single site means it's border is the boundary
+        guard queue.count > 0 else { return ConvexPolygon(lines: boundary.borders) }
+        
+        // Sort them in CCW order
+        var result: [Line] = [queue.popLast()!]
+        while !queue.isEmpty {
+            let first = result.first!.p0
+            let last = result.last!.p1
+            
+            for line in queue {
+                let index = queue.indexOf(line)!
+                
+                if last == line.p0 {
+                    result.append(line)
+                    queue.removeAtIndex(index)
+                }
+                else if last == line.p1 {
+                    result.append(Line(p0: line.p1, p1: line.p0))
+                    queue.removeAtIndex(index)
+                }
+                else if first == line.p1 {
+                    result.insert(line, atIndex: 0)
+                    queue.removeAtIndex(index)
+                }
+                else if first == line.p0 {
+                    result.insert(Line(p0: line.p1, p1: line.p0), atIndex: 0)
+                    queue.removeAtIndex(index)
+                }
+            }
+        }
+        
+        let firstEdge = result.first!
+        let lastEdge = result.last!
+        
+        let firstIntersection = firstEdge.p0
+        let lastIntersection = lastEdge.p1
+        
+        guard let firstBorder = boundary.pointOnBorder(firstIntersection)
+            ,let lastBorder = boundary.pointOnBorder(lastIntersection) else { return ConvexPolygon(lines: result) }
+        
+        guard firstBorder != lastBorder else {
+            result.append(Line(p0: lastIntersection, p1: firstIntersection))
+            return ConvexPolygon(lines: result)
+        }
+        
+        let sitePoint = site.point
+        let l0 = Line(p0: sitePoint, p1: lastBorder.p0)
+        let l1 = Line(p0: sitePoint, p1: lastBorder.p1)
+        
+        let t0 = voronoiEdges.reduce(false){ $0 || $1.intersects(l0) }
+        let t1 = voronoiEdges.reduce(false){ $0 || $1.intersects(l1) }
+        if !t0 {
+            result.append(Line(p0: lastIntersection, p1: lastBorder.p0))
+        }
+        if !t1 {
+            result.append(Line(p0: lastIntersection, p1: lastBorder.p1))
+        }
+        
+        /*
+        if !lastEdge.intersects(l0) {
+        result.append(Line(p0: lastIntersection, p1: lastBorder.p0))
+        }
+        if !lastEdge.intersects(l1) {
+        result.append(Line(p0: lastIntersection, p1: lastBorder.p1))
+        }*/
+        
+        let f0 = Line(p0: sitePoint, p1: firstBorder.p0)
+        let f1 = Line(p0: sitePoint, p1: firstBorder.p1)
+        
+        let g0 = voronoiEdges.reduce(false){ $0 || $1.intersects(f0) }
+        let g1 = voronoiEdges.reduce(false){ $0 || $1.intersects(f1) }
+        if !g0 {
+            result.insert(Line(p0: firstBorder.p0, p1: firstIntersection), atIndex: 0)
+        }
+        if !g1 {
+            result.insert(Line(p0: firstBorder.p1, p1: firstIntersection), atIndex: 0)
+        }
+        /*if !firstEdge.intersects(f0) {
+        result.insert(Line(p0: firstBorder.p0, p1: firstIntersection), atIndex: 0)
+        }
+        if !firstEdge.intersects(f1) {
+        result.insert(Line(p0: firstBorder.p1, p1: firstIntersection), atIndex: 0)
+        }*/
+        
+        queue = boundary.borders.filter{ $0 != lastBorder && $0 != firstBorder }
+        
+        queue.forEach{
+            let first = result.first!.p0
+            let last = result.last!.p1
+            
+            if last == $0.p0 {
+                result.append($0)
+            }
+            else if last == $0.p1 {
+                result.append(Line(p0: $0.p1, p1: $0.p0))
+            }
+            else if first == $0.p1 {
+                result.insert($0, atIndex: 0)
+            }
+            else if first == $0.p0 {
+                result.insert(Line(p0: $0.p1, p1: $0.p0), atIndex: 0)
+            }
+        }
+        
+        return ConvexPolygon(lines: result)
+    }
 }

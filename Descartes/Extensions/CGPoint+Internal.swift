@@ -17,6 +17,7 @@ internal extension CGPoint {
 
 internal extension CGPoint {
     internal var normalized: CGPoint {
+        guard x != 0 && y != 0 else { return CGPointZero }
         let s = 1/sqrt(self.x*self.x + self.y*self.y)
         return CGPoint(x: self.x*s, y: self.y*s)
     }
@@ -39,8 +40,37 @@ internal extension CGPoint {
         return CGPoint.compareYThenX(self, point1: point)
     }
     
-    internal func perp(point: CGPoint) -> CGFloat {
+    internal func dot(point: CGPoint) -> CGFloat {
+        return x*point.x + y*point.y
+    }
+    
+    internal func cross(point: CGPoint) -> CGFloat {
         return x*point.y - y*point.x
+    }
+}
+
+extension CGPoint {
+    internal func colinear(line: Line) -> Bool {
+        let ab = line.vector
+        let ac = line.p1-self
+        return ab.cross(ac) == 0
+    }
+    
+    private var epsilon: CGFloat {
+        return 0.01
+    }
+    internal func on(line: Line) -> Bool {
+        let ab = line.vector
+        let ac = line.p1-self
+        guard abs(ab.cross(ac)) < epsilon else { return false }
+        
+        let kac = ac.dot(ab)
+        if kac < 0 { return false }
+        if kac == 0 { return true } // Conincide with extremepoint
+        let kab = ab.dot(ab)
+        if kac > kab { return false }
+        if kac == kab { return true } // Conincide with extremepoint
+        return true // On line
     }
 }
 
@@ -53,7 +83,7 @@ extension CGPoint : Hashable {
 }
 
 internal func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
-    return CGPointEqualToPoint(lhs, rhs)
+    return lhs.distance(rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)
 }
 
 internal func * (point: CGPoint, value: Float) -> CGPoint {

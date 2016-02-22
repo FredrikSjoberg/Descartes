@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7622AEF01C74693B0055BA9C /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */; };
 		76CF76891B5C376D00A2FCC8 /* Descartes.h in Headers */ = {isa = PBXBuildFile; fileRef = 76CF76881B5C376D00A2FCC8 /* Descartes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76CF768F1B5C376D00A2FCC8 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; };
 		76CF76961B5C376D00A2FCC8 /* DescartesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		76CF76831B5C376D00A2FCC8 /* Descartes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Descartes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CF76871B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76CF76881B5C376D00A2FCC8 /* Descartes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Descartes.h; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				76CF77431B5D7B4000A2FCC8 /* Int+Internal.swift */,
 				76CF774B1B5D7BC500A2FCC8 /* Float+Internal.swift */,
 				76CF774C1B5D7BC500A2FCC8 /* GLKVector2+Internal.swift */,
+				7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				76D50A8C1C72622700DBB660 /* Heap.swift in Sources */,
 				76CF77421B5D7AE400A2FCC8 /* CGPoint+Internal.swift in Sources */,
 				76CF774A1B5D7B6D00A2FCC8 /* TransformedVertex.swift in Sources */,
+				7622AEF01C74693B0055BA9C /* CGRect+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

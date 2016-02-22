@@ -7,13 +7,22 @@
 //
 
 import Foundation
+import CoreGraphics
 
 public protocol BoundaryType {
+    /// Should return the border with lines arranged in CCW order.
+    var borders: [Line] { get }
     func clipVertices(segment: Segment) -> Line?
     func contains(point: CGPoint) -> Bool
+    func pointOnBorder(point: CGPoint) -> Line?
+    func intersects(line: Line) -> Line?
 }
 
 extension CGRect : BoundaryType {
+    public var borders: [Line] {
+        return [bottomEdge, rightEdge, topEdge, leftEdge]
+    }
+    
     public func clipVertices(segment: Segment) -> Line? {
         let p0 = segment.p0
         let p1 = segment.p1
@@ -147,6 +156,22 @@ extension CGRect : BoundaryType {
             return Line(p0: CGPoint(x: x0, y: y0), p1: CGPoint(x: x1, y: y1))
         }
     }
+    
+    public func pointOnBorder(point: CGPoint) -> Line? {
+        if point.on(bottomEdge) { return bottomEdge }
+        else if point.on(rightEdge) { return rightEdge }
+        else if point.on(topEdge) { return topEdge }
+        else if point.on(leftEdge) { return leftEdge }
+        else { return nil }
+    }
+    
+    public func intersects(line: Line) -> Line? {
+        if bottomEdge.intersects(line) { return bottomEdge }
+        else if rightEdge.intersects(line) { return rightEdge }
+        else if topEdge.intersects(line) { return topEdge }
+        else if leftEdge.intersects(line) { return leftEdge }
+        else { return nil }
+    }
 }
 
 /// Vertices of the polygon needs to be arranged in a CCW fashion.
@@ -155,26 +180,39 @@ public struct ConvexPolygon : BoundaryType {
     public let edges: [Line]
     
     public init(rect: CGRect) {
-        let bottomLeft = rect.origin
-        let bottomRight = CGPoint(x: rect.origin.x + rect.size.width, y: rect.origin.y)
-        let topRight = CGPoint(x: bottomRight.x, y: rect.origin.y + rect.size.height)
-        let topLeft = CGPoint(x: rect.origin.x, y: topRight.y)
-        edges = [
-            Line(p0: bottomLeft, p1: bottomRight),
-            Line(p0: bottomRight, p1: topRight),
-            Line(p0: topRight, p1: topLeft),
-            Line(p0: topLeft, p1: bottomLeft)
-        ]
-        
+        edges = [rect.bottomEdge, rect.rightEdge, rect.topEdge, rect.leftEdge]
         maximumBounds = rect
+    }
+    
+    /// Lines are asumed to form a convex hull where line[i].p1 == line[i+1].p0 all the way to line[n].p1 == line[0].p0
+    /// Minimum required lines are 3 to form a convex polygon. Supplying less will result in a zero-line/bounds polygon
+    /// Note: Neighter convexitivity or CCW is enforced.
+    public init(lines: [Line]) {
+        if lines.count < 3 {
+            edges = []
+            maximumBounds = CGRectZero
+        }
+        else {
+            // This accounts for all vertices
+            let xsort = lines.sort{ $0.p0.x < $1.p0.x }
+            let ysort = lines.sort{ $0.p0.y < $1.p0.y }
+            let xmin = xsort.first!.p0.x
+            let ymin = ysort.first!.p0.y
+            let xmax = xsort.last!.p0.x
+            let ymax = ysort.last!.p0.y
+            
+            maximumBounds = CGRect(x: xmin, y: ymin, width: xmax-xmin, height: ymax-ymin)
+            edges = lines
+            
+        }
     }
     
     /// Vertices will be traversed in a CCW fashion, creating a Line between vertices[i] and vertices[i+1]
     /// all the way to the last line between vertices[n] and vertices[0].
-    /// The resulting polygon is required to be convex.
+    /// Minimum required vertices are 3 to form a convex polygon. Supplying less will result in a zero-line/bounds polygon
     /// Note: Neighter convexitivity or CCW is enforced.
     public init(vertices: [CGPoint]) {
-        if vertices.count == 0 {
+        if vertices.count < 3 {
             edges = []
             maximumBounds = CGRectZero
         }
@@ -202,15 +240,10 @@ public struct ConvexPolygon : BoundaryType {
     }
     
     private let maximumBounds: CGRect
-    /*private var maximumBounds: CGRect {
-    guard edges.count > 0 else { return CGRectZero }
-    let xmin = edges.map{ $0.p0.x < $0.p1.x ? $0.p0.x : $0.p1.x }.minElement()!
-    let ymin = edges.map{ $0.p0.y < $0.p1.y ? $0.p0.y : $0.p1.y }.minElement()!
-    let xmax = edges.map{ $0.p0.x > $0.p1.x ? $0.p0.x : $0.p1.x }.maxElement()!
-    let ymax = edges.map{ $0.p0.y > $0.p1.y ? $0.p0.y : $0.p1.y }.maxElement()!
     
-    return CGRect(x: xmin, y: ymin, width: xmax-xmin, height: ymax-ymin)
-    }*/
+    public var borders: [Line] {
+        return edges
+    }
     
     private let parallelEpsilon: CGFloat = 1.0E-10
     public func clipVertices(segment: Segment) -> Line? {
@@ -230,8 +263,8 @@ public struct ConvexPolygon : BoundaryType {
         
         for edge in edges {
             let e = edge.p1-edge.p0
-            let n = e.perp(line.p0-edge.p0)
-            let d = -e.perp(ds)
+            let n = e.cross(line.p0-edge.p0)
+            let d = -e.cross(ds)
             if fabs(d) < parallelEpsilon {
                 if n < 0 {
                     // Segment is nearly parallel with edge and s.p0 is outside the edge
@@ -280,5 +313,19 @@ public struct ConvexPolygon : BoundaryType {
             }
         }
         return (crossingNumber % 2 == 0 ? false : true)
+    }
+    
+    public func pointOnBorder(point: CGPoint) -> Line? {
+        for edge in edges {
+            if point.on(edge) { return edge }
+        }
+        return nil
+    }
+    
+    public func intersects(line: Line) -> Line? {
+        for edge in edges {
+            if edge.intersects(line) { return edge }
+        }
+        return nil
     }
 }

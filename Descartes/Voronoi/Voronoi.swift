@@ -179,6 +179,67 @@ public extension Voronoi {
         return Set()
     }
     
+    private struct BorderIntersection {
+        let border: Line
+        let atPoint: CGPoint
+        let edge: Line
+        
+        init(border: Line, atPoint: CGPoint, byLine: Line) {
+            self.border = border
+            self.atPoint = atPoint
+            edge = byLine
+        }
+        
+        
+    }
+    
+    private func borderPath(site: Site) -> [(raw: Line, intersected: Line)]? {
+        let voronoiEdges = site.edges.flatMap{ $0.voronoiEdge }
+        
+        var intersections: [BorderIntersection] = []
+        boundary.borders.forEach{ b in
+            voronoiEdges.forEach{
+                if $0.p0.on(b) {
+                    intersections.append(BorderIntersection(border: b, atPoint: $0.p0, byLine: $0))
+                }
+                
+                if $0.p1.on(b) {
+                    intersections.append(BorderIntersection(border: b, atPoint: $0.p1, byLine: $0))
+                }
+            }
+        }
+        
+        var borderLines: [(raw: Line, intersected: Line)] = []
+        boundary.borders.forEach{ b in
+            let merged = intersections.filter{ $0.border == b }
+            
+            if merged.count == 1 {
+                let intersection = merged.first!
+                let sitePoint = site.point
+                let l0 = Line(p0: sitePoint, p1: intersection.border.p0)
+                let l1 = Line(p0: sitePoint, p1: intersection.border.p1)
+                
+                let t0 = voronoiEdges.reduce(true){ $0 && !$1.intersects(l0) }
+                let t1 = voronoiEdges.reduce(true){ $0 && !$1.intersects(l1) }
+                
+                if t0 {
+                    borderLines.append((intersection.border, Line(p0: intersection.atPoint, p1: intersection.border.p0)))
+                }
+                if t1 {
+                    borderLines.append((intersection.border, Line(p0: intersection.atPoint, p1: intersection.border.p1)))
+                }
+            }
+            else if merged.count == 2 {
+                let first = merged.first!
+                let last = merged.last!
+                
+                borderLines.append((first.border, Line(p0: first.atPoint, p1: last.atPoint)))
+            }
+        }
+        
+        return borderLines
+    }
+    
     /// Returns a ConvexPolygon with edges surrounding the site (including boundary edges if any), or nil if no site is found.
     public func cellAt(point: CGPoint) -> ConvexPolygon? {
         guard boundary.contains(point) else { return nil }
@@ -187,8 +248,22 @@ public extension Voronoi {
         let voronoiEdges = site.edges.flatMap{ $0.voronoiEdge }
         var queue = voronoiEdges
         
+        
         // No edges? Single site means it's border is the boundary
         guard queue.count > 0 else { return ConvexPolygon(lines: boundary.borders) }
+        
+        var remainingBorders = boundary.borders
+        if let borderLines = borderPath(site) {
+            let intersected = borderLines.map{ $0.intersected }
+            let raw = borderLines.map{ $0.raw }
+            
+            raw.forEach{
+                if let index = remainingBorders.indexOf($0) {
+                    remainingBorders.removeAtIndex(index)
+                }
+            }
+            queue.appendContentsOf(intersected)
+        }
         
         // Sort them in CCW order
         var result: [Line] = [queue.popLast()!]
@@ -218,62 +293,7 @@ public extension Voronoi {
             }
         }
         
-        let firstEdge = result.first!
-        let lastEdge = result.last!
-        
-        let firstIntersection = firstEdge.p0
-        let lastIntersection = lastEdge.p1
-        
-        guard let firstBorder = boundary.pointOnBorder(firstIntersection)
-            ,let lastBorder = boundary.pointOnBorder(lastIntersection) else { return ConvexPolygon(lines: result) }
-        
-        guard firstBorder != lastBorder else {
-            result.append(Line(p0: lastIntersection, p1: firstIntersection))
-            return ConvexPolygon(lines: result)
-        }
-        
-        let sitePoint = site.point
-        let l0 = Line(p0: sitePoint, p1: lastBorder.p0)
-        let l1 = Line(p0: sitePoint, p1: lastBorder.p1)
-        
-        let t0 = voronoiEdges.reduce(false){ $0 || $1.intersects(l0) }
-        let t1 = voronoiEdges.reduce(false){ $0 || $1.intersects(l1) }
-        if !t0 {
-            result.append(Line(p0: lastIntersection, p1: lastBorder.p0))
-        }
-        if !t1 {
-            result.append(Line(p0: lastIntersection, p1: lastBorder.p1))
-        }
-        
-        /*
-        if !lastEdge.intersects(l0) {
-        result.append(Line(p0: lastIntersection, p1: lastBorder.p0))
-        }
-        if !lastEdge.intersects(l1) {
-        result.append(Line(p0: lastIntersection, p1: lastBorder.p1))
-        }*/
-        
-        let f0 = Line(p0: sitePoint, p1: firstBorder.p0)
-        let f1 = Line(p0: sitePoint, p1: firstBorder.p1)
-        
-        let g0 = voronoiEdges.reduce(false){ $0 || $1.intersects(f0) }
-        let g1 = voronoiEdges.reduce(false){ $0 || $1.intersects(f1) }
-        if !g0 {
-            result.insert(Line(p0: firstBorder.p0, p1: firstIntersection), atIndex: 0)
-        }
-        if !g1 {
-            result.insert(Line(p0: firstBorder.p1, p1: firstIntersection), atIndex: 0)
-        }
-        /*if !firstEdge.intersects(f0) {
-        result.insert(Line(p0: firstBorder.p0, p1: firstIntersection), atIndex: 0)
-        }
-        if !firstEdge.intersects(f1) {
-        result.insert(Line(p0: firstBorder.p1, p1: firstIntersection), atIndex: 0)
-        }*/
-        
-        queue = boundary.borders.filter{ $0 != lastBorder && $0 != firstBorder }
-        
-        queue.forEach{
+        remainingBorders.forEach{
             let first = result.first!.p0
             let last = result.last!.p1
             

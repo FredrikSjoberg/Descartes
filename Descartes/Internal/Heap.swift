@@ -33,16 +33,17 @@ internal struct Heap<Element: Equatable> {
 }
 
 extension Heap {
-    private mutating func swimHeap(var index: Int) {
-        while index > 0 {
-            let parent = (index - 1) >> 1
-            if comparator(contents[parent], contents[index]) {
+    private mutating func swimHeap(index: Int) {
+        var i = index
+        while i > 0 {
+            let parent = (i - 1) >> 1
+            if comparator(contents[parent], contents[i]) {
                 break
             }
             
-            swap(&contents[parent], &contents[index])
+            swap(&contents[parent], &contents[i])
             
-            index = parent
+            i = parent
         }
     }
     

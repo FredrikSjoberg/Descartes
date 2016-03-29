@@ -9,7 +9,7 @@
 import Foundation
 
 internal protocol QueueType {
-    typealias Element
+    associatedtype Element
     
     mutating func push(element: Element)
     mutating func pop() -> Element?

@@ -9,6 +9,6 @@
 import Foundation
 
 internal protocol HeapType {
-    typealias Element
+    associatedtype Element
     var comparator: (Element, Element) -> Bool { get }
 }

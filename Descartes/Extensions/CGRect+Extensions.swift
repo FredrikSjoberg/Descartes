@@ -18,20 +18,25 @@ public func > (lhs: CGSize, rhs: CGSize) -> Bool {
 }
 
 extension CGRect {
-    var bottomLeft: CGPoint {
+    public var bottomLeft: CGPoint {
         return origin
     }
     
-    var bottomRight: CGPoint {
+    public var bottomRight: CGPoint {
         return CGPoint(x: origin.x + size.width, y: origin.y)
     }
     
-    var topRight: CGPoint {
+    public var topRight: CGPoint {
         return CGPoint(x: bottomRight.x, y: origin.y + size.height)
     }
     
-    var topLeft: CGPoint {
+    public var topLeft: CGPoint {
         return CGPoint(x: origin.x, y: topRight.y)
+    }
+    
+    /// Returns the corners in clockwise order
+    public var cornerPoints: [CGPoint] {
+        return [bottomLeft, topLeft, topRight, bottomRight]
     }
 }
 

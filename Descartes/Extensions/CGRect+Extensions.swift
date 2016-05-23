@@ -90,7 +90,7 @@ extension CGRect {
     /**
      'size' width and height divided by 2, in other words a quarter of the original 'size'
     */
-    var quarterSize: CGSize {
+    public var quarterSize: CGSize {
         return size/2
     }
     
@@ -100,7 +100,7 @@ extension CGRect {
      - returns:
      4 equally sized rectangles, split by lines at 'width'/2 and 'height'/2
     */
-    func quarternize() -> [CGRect] {
+    public func quarternize() -> [CGRect] {
         return [
             CGRect(origin: origin, size: quarterSize),
             CGRect(origin: CGPoint(x: origin.x, y: origin.y+quarterSize.height), size: quarterSize),

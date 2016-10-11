@@ -9,7 +9,7 @@
 import Foundation
 
 internal extension Int {
-    func clamp (min: Int, _ max: Int) -> Int {
+    func clamp (_ min: Int, _ max: Int) -> Int {
         return Swift.max(min, Swift.min(max, self))
     }
 }

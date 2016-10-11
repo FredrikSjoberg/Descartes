@@ -10,13 +10,13 @@ import Foundation
 import GLKit
 
 public struct Perlin2D {
-    private let octaves: Int
-    private let frequency: Float
-    private let amplitude: Float
-    private let seed: Int
+    fileprivate let octaves: Int
+    fileprivate let frequency: Float
+    fileprivate let amplitude: Float
+    fileprivate let seed: Int
     
-    internal var p: [Int] = Array(count: doubleBplus2, repeatedValue: 0)
-    internal var g2: [CGPoint] = Array(count: doubleBplus2, repeatedValue: CGPointZero)
+    internal var p: [Int] = Array(repeating: 0, count: doubleBplus2)
+    internal var g2: [CGPoint] = Array(repeating: CGPoint.zero, count: doubleBplus2)
     
     public init(octaves: Int, frequency: Float, amplitude: Float, seed: Int) {
         self.octaves = octaves
@@ -24,16 +24,15 @@ public struct Perlin2D {
         self.amplitude = amplitude
         self.seed = seed
         
-        //        srand48(seed)
-        srand(UInt32(seed))
+        srand48(seed)
         
         for i in 0..<B {
             p[i] = i
             g2[i] = CGPoint(x: generateRandom, y: generateRandom).normalized
         }
         
-        for i in (0..<B).reverse() {
-            let j = Int(rand()) % B
+        for i in (0..<B).reversed() {
+            let j = Int(arc4random()) % B
             swap(&p[i], &p[j])
         }
         
@@ -45,35 +44,35 @@ public struct Perlin2D {
 }
 
 public extension Perlin2D {
-    public func noise(point: CGPoint) -> Float {
+    public func noise(for point: CGPoint) -> Float {
         var amp = amplitude
         var vec = point*frequency
         var result: Float = 0
         for _ in 0..<octaves {
-            result += generate2DNoise(vec)*amp
+            result += generate2DNoise(for: vec)*amp
             vec = vec*2
             amp *= 0.5
         }
         return result
     }
     
-    public func noise(vector: GLKVector2) -> Float {
-        return noise(vector.cgPoint)
+    public func noise(for vector: GLKVector2) -> Float {
+        return noise(for: vector.cgPoint)
     }
     
     /// Returns a value between [0, 1] regardless of the amplitude used
-    public func normalizedNoise(point: CGPoint) -> Float {
-        return (noise(point) + amplitude)/(2*amplitude)
+    public func normalizedNoise(for point: CGPoint) -> Float {
+        return (noise(for: point) + amplitude)/(2*amplitude)
     }
     
     /// Returns a value between [0, 1] regardless of the amplitude used
-    public func normalizedNoise(vector: GLKVector2) -> Float {
-        return normalizedNoise(vector.cgPoint)
+    public func normalizedNoise(for vector: GLKVector2) -> Float {
+        return normalizedNoise(for: vector.cgPoint)
     }
 }
 
 private extension Perlin2D {
-    private func generate2DNoise(vec: CGPoint) -> Float {
+    func generate2DNoise(for vec: CGPoint) -> Float {
         let x = Table(value: Float(vec.x))
         let y = Table(value: Float(vec.y))
         
@@ -96,7 +95,7 @@ private extension Perlin2D {
         return sy.lerp(a: a, b: b)
     }
     
-    private func at2(point: CGPoint, _ rx: Float, _ ry: Float) -> Float {
+    func at2(_ point: CGPoint, _ rx: Float, _ ry: Float) -> Float {
         return (rx * Float(point.x) + ry * Float(point.y))
     }
 }

@@ -12,16 +12,16 @@ import Foundation
 import CoreGraphics
 
 internal class EventQueue {
-    private var heap: Heap<Halfedge> = Heap{ $0.intersectionVertex!.yStar < $1.intersectionVertex!.yStar } // NOTE: By design, all halfedges added to the EventQueue will have an intersectionVertex
+    fileprivate var heap: Heap<Halfedge> = Heap{ $0.intersectionVertex!.yStar < $1.intersectionVertex!.yStar } // NOTE: By design, all halfedges added to the EventQueue will have an intersectionVertex
     
     
     internal func insert(halfedge: Halfedge, withIntersection vertex: TransformedVertex) {
         halfedge.intersectionVertex = vertex
-        heap.push(halfedge)
+        heap.push(element: halfedge)
     }
     
     internal func remove(halfedge: Halfedge) {
-        heap.invalidate(halfedge)
+        heap.invalidate(element: halfedge)
     }
     
     internal func pop() -> Halfedge? {

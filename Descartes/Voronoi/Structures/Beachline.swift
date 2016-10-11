@@ -10,8 +10,8 @@ import Foundation
 import CoreGraphics
 
 internal class BeachLine {
-    private var leftEnd: Halfedge
-    private var rightEnd: Halfedge
+    fileprivate var leftEnd: Halfedge
+    fileprivate var rightEnd: Halfedge
     
     internal init() {
         leftEnd = Halfedge.dummy()
@@ -35,9 +35,9 @@ internal class BeachLine {
         halfedge.right = nil
     }
     
-    internal func leftNeighbor(point: CGPoint) -> Halfedge {
+    internal func leftNeighbor(for point: CGPoint) -> Halfedge {
         var current = leftEnd
-        while current != rightEnd && current.isLeftOf(point) {
+        while current != rightEnd && current.isLeft(of: point) {
             if current.right != nil {
                 current = current.right!
             }

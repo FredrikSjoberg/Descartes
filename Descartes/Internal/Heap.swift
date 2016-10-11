@@ -10,7 +10,7 @@ import Foundation
 
 internal struct Heap<Element: Equatable> {
     internal let comparator: (Element, Element) -> Bool
-    private var contents: [Element]
+    fileprivate var contents: [Element]
     
     internal var isEmpty: Bool {
         return contents.isEmpty
@@ -20,20 +20,20 @@ internal struct Heap<Element: Equatable> {
         return contents.contains(element)
     }
     
-    internal init(comparator: (Element, Element) -> Bool) {
+    internal init(comparator: @escaping (Element, Element) -> Bool) {
         self.comparator = comparator
         contents = []
     }
     
-    internal init(comparator: (Element, Element) -> Bool, contents: [Element]) {
+    internal init(comparator: @escaping (Element, Element) -> Bool, contents: [Element]) {
         self.comparator = comparator
         self.contents = []
-        contents.forEach{ push($0) }
+        contents.forEach{ push(element: $0) }
     }
 }
 
 extension Heap {
-    private mutating func swimHeap(index: Int) {
+    fileprivate mutating func swimHeap(index: Int) {
         var i = index
         while i > 0 {
             let parent = (i - 1) >> 1
@@ -47,7 +47,7 @@ extension Heap {
         }
     }
     
-    private mutating func sinkHeap(index: Int) {
+    fileprivate mutating func sinkHeap(index: Int) {
         let left = index * 2 + 1
         let right = index * 2 + 2
         var smallest = index
@@ -62,7 +62,7 @@ extension Heap {
         }
         if smallest != index {
             swap(&contents[index], &contents[smallest])
-            sinkHeap(smallest)
+            sinkHeap(index: smallest)
         }
     }
 }
@@ -72,7 +72,7 @@ extension Heap : DynamicQueueType {
         contents.append(element)
         
         guard contents.count > 1 else { return }
-        swimHeap(contents.count - 1)
+        swimHeap(index: contents.count - 1)
     }
     
     mutating func pop() -> Element? {
@@ -81,7 +81,7 @@ extension Heap : DynamicQueueType {
         
         swap(&contents[0], &contents[contents.endIndex - 1])
         let pop = contents.removeLast()
-        sinkHeap(0)
+        sinkHeap(index: 0)
         return pop
     }
     
@@ -91,7 +91,7 @@ extension Heap : DynamicQueueType {
     
     mutating func invalidate(element: Element) {
         guard !contents.isEmpty else { return }
-        guard let index = contents.indexOf(element) else { return }
+        guard let index = contents.index(of: element) else { return }
         let endIndex = contents.endIndex - 1
         guard index != endIndex else {
             // Bugfix! fatal error: swapping a location with itself is not supported
@@ -101,7 +101,7 @@ extension Heap : DynamicQueueType {
         
         swap(&contents[index], &contents[endIndex])
         contents.removeLast()
-        sinkHeap(index)
+        sinkHeap(index: index)
     }
 }
 

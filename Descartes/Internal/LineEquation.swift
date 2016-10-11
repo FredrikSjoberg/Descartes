@@ -34,20 +34,20 @@ public struct LineEquation {
         }
     }
     
-    public func determinant(eq: LineEquation) -> CGFloat {
+    public func determinant(with eq: LineEquation) -> CGFloat {
         return (self.a * eq.b - self.b * eq.a)
     }
     
     // Lines are parallel if their determinant does not deviate more than some value (parallelEpsilon)
-    private let parallelEpsilon: CGFloat = 1.0E-10
-    public func isParallel(eq: LineEquation) -> Bool {
-        let det = determinant(eq)
+    fileprivate let parallelEpsilon: CGFloat = 1.0E-10
+    public func isParallel(to eq: LineEquation) -> Bool {
+        let det = determinant(with: eq)
         return (-parallelEpsilon < det && det < parallelEpsilon)
     }
     
     public func intersects(eq: LineEquation) -> CGPoint? {
-        if isParallel(eq) { return nil }
-        let det = determinant(eq)
+        if isParallel(to: eq) { return nil }
+        let det = determinant(with: eq)
         let xIntersect = (c * eq.b - eq.c * b)/det
         let yIntersect = (eq.c * a - c * eq.a)/det
         return CGPoint(x: xIntersect, y: yIntersect)

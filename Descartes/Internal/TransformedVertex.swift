@@ -17,7 +17,7 @@ internal struct TransformedVertex {
     
     internal init(vertex: CGPoint, relativeTo site: Site) {
         actualPoint = vertex
-        yStar = Float(vertex.y) + vertex.distance(site.point)
+        yStar = Float(vertex.y) + vertex.distance(to: site.point)
     }
     
     internal var transformedPoint: CGPoint {

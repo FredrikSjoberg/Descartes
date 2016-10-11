@@ -20,5 +20,5 @@ internal let NM = 0xfff
 internal let doubleBplus2 = perlinSampleSize + perlinSampleSize + 2
 
 internal var generateRandom: Float {
-    return Float((random() % (B + B)) - B) / Float(B)
+    return Float((Int(arc4random()) % (B + B)) - B) / Float(B)
 }

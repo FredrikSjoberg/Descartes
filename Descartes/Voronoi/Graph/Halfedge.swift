@@ -33,23 +33,23 @@ internal class Halfedge : Equatable {
     }
     
     internal func intersects(other: Halfedge) -> CGPoint? {
-        guard let e0 = edge, e1 = other.edge else { return nil }
+        guard let e0 = edge, let e1 = other.edge else { return nil }
         guard e0.rightSite != e1.rightSite else { return nil }
         
-        guard let intersection = e0.equation.intersects(e1.equation) else { return nil }
+        guard let intersection = e0.equation.intersects(eq: e1.equation) else { return nil }
         
-        let reference = e0.rightSite.point.compareYThenX(e1.rightSite.point) ? (self, e0) : (other, e1)
+        let reference = e0.rightSite.point.compareYThenX(with: e1.rightSite.point) ? (self, e0) : (other, e1)
         
         let rightOfSite = intersection.x >= reference.1.rightSite.point.x
         
-        if (rightOfSite && reference.0.orientation == .Left) || (!rightOfSite && reference.0.orientation == .Right) {
+        if (rightOfSite && reference.0.orientation == .left) || (!rightOfSite && reference.0.orientation == .right) {
             return nil
         }
         
         return intersection
     }
     
-    internal func isLeftOf(point: CGPoint) -> Bool {
+    internal func isLeft(of point: CGPoint) -> Bool {
         guard let edge = edge else {
             // TODO: This is terrible. If we ever decide to search from right->left, rightEnd will still be left of any point!
             return true
@@ -58,11 +58,11 @@ internal class Halfedge : Equatable {
         let topSite = edge.rightSite
         let rightOfSite = (point.x > topSite.point.x)
         
-        if rightOfSite && orientation == .Left {
+        if rightOfSite && orientation == .left {
             return true
         }
         
-        if !rightOfSite && orientation == .Right {
+        if !rightOfSite && orientation == .right {
             return false
         }
         
@@ -103,7 +103,7 @@ internal class Halfedge : Equatable {
             let t3 = yl - topSite.point.y
             above = (t1*t1 > t2*t2 + t3*t3)
         }
-        return (orientation == .Left ? above : !above)
+        return (orientation == .left ? above : !above)
     }
 }
 

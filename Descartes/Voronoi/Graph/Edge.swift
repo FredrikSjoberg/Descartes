@@ -15,11 +15,11 @@ class Edge {
     
     internal let equation: LineEquation
     
-    private var _leftVertex: CGPoint?
+    fileprivate var _leftVertex: CGPoint?
     internal var leftVertex: CGPoint? {
         return _leftVertex
     }
-    private var _rightVertex: CGPoint?
+    fileprivate var _rightVertex: CGPoint?
     internal var rightVertex: CGPoint? {
         return _rightVertex
     }
@@ -40,26 +40,26 @@ class Edge {
         rightSite.edges.append(self)
     }
     
-    internal func site(orientation: Orientation) -> Site {
+    internal func site(with orientation: Orientation) -> Site {
         switch orientation {
-        case .Left: return leftSite
-        case .Right: return rightSite
+        case .left: return leftSite
+        case .right: return rightSite
         }
     }
     
-    internal func setVertex(vertex: CGPoint, orientation: Orientation) {
+    internal func set(vertex: CGPoint, with orientation: Orientation) {
         switch orientation {
-        case .Left: _leftVertex = vertex
-        case .Right: _rightVertex = vertex
+        case .left: _leftVertex = vertex
+        case .right: _rightVertex = vertex
         }
     }
     
     
-    internal func clipVertices(boundary: BoundaryType) {
+    internal func clipVertices(by boundary: BoundaryType) {
         let vertices = (equation.a == 1 && equation.b >= 0 ? (rightVertex, leftVertex) : (leftVertex, rightVertex))
         
         let segment = Segment(p0: vertices.0, p1: vertices.1, equation: equation)
-        clippedVertices = boundary.clipVertices(segment)
+        clippedVertices = boundary.clipVertices(of: segment)
     }
 }
 
@@ -74,7 +74,7 @@ extension Edge {
     
     internal var voronoiEdge: Line? {
         if let vertices = clippedVertices {
-            if !CGPointEqualToPoint(vertices.p0, vertices.p1) {
+            if !vertices.p0.equalTo(vertices.p1) {
                 return Line(p0: vertices.p0, p1: vertices.p1)
             }
         }

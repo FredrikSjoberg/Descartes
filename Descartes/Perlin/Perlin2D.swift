@@ -33,6 +33,7 @@ public struct Perlin2D {
         
         for i in (0..<B).reversed() {
             let j = Int(arc4random()) % B
+            guard i != j else { continue }
             swap(&p[i], &p[j])
         }
         

@@ -8,32 +8,34 @@
 
 import Foundation
 import GLKit
+import GameplayKit
 
 public struct Perlin2D {
     fileprivate let octaves: Int
     fileprivate let frequency: Float
     fileprivate let amplitude: Float
-    fileprivate let seed: Int
+    fileprivate let seed: UInt64
+    fileprivate let random: GKRandom
     
     internal var p: [Int] = Array(repeating: 0, count: doubleBplus2)
     internal var g2: [CGPoint] = Array(repeating: CGPoint.zero, count: doubleBplus2)
     
-    public init(octaves: Int, frequency: Float, amplitude: Float, seed: Int) {
+    public init(octaves: Int, frequency: Float, amplitude: Float, seed: UInt64) {
         self.octaves = octaves
         self.frequency = frequency
         self.amplitude = amplitude
         self.seed = seed
-        
-        srand48(seed)
+        self.random = GKMersenneTwisterRandomSource(seed: seed)
         
         for i in 0..<B {
             p[i] = i
-            g2[i] = CGPoint(x: generateRandom, y: generateRandom).normalized
+            g2[i] = CGPoint(x: generateRandom(random), y: generateRandom(random)).normalized
         }
         
         for i in (0..<B).reversed() {
-            let j = Int(arc4random()) % B
+            let j = random.nextInt(upperBound: Int.max) % B
             guard i != j else { continue }
+            
             swap(&p[i], &p[j])
         }
         

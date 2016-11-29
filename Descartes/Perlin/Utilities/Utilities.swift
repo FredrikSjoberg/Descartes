@@ -19,6 +19,7 @@ internal let NM = 0xfff
 
 internal let doubleBplus2 = perlinSampleSize + perlinSampleSize + 2
 
-internal var generateRandom: Float {
-    return Float((Int(arc4random()) % (B + B)) - B) / Float(B)
+import GameplayKit
+internal func generateRandom(_ random: GKRandom) -> Float {
+    return Float((Int(random.nextInt()) % (B + B)) - B) / Float(B)
 }

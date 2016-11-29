@@ -9,13 +9,13 @@
 import Foundation
 
 internal enum Orientation {
-    case Left
-    case Right
+    case left
+    case right
     
     internal var opposite: Orientation {
         switch self {
-        case .Left: return .Right
-        case .Right: return .Left
+        case .left: return .right
+        case .right: return .left
         }
     }
 }

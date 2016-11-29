@@ -12,8 +12,8 @@ import CoreGraphics
 public protocol BoundaryType {
     /// Should return the border with lines arranged in CCW order.
     var borders: [Line] { get }
-    func clipVertices(segment: Segment) -> Line?
-    func contains(point: CGPoint) -> Bool
+    func clipVertices(of segment: Segment) -> Line?
+    func contains(_ point: CGPoint) -> Bool
     func pointOnBorder(point: CGPoint) -> Line?
     func intersects(line: Line) -> Line?
 }
@@ -23,14 +23,14 @@ extension CGRect : BoundaryType {
         return [bottomEdge, rightEdge, topEdge, leftEdge]
     }
     
-    public func clipVertices(segment: Segment) -> Line? {
+    public func clipVertices(of segment: Segment) -> Line? {
         let p0 = segment.p0
         let p1 = segment.p1
         
-        let xmin = CGRectGetMinX(self)
-        let xmax = CGRectGetMaxX(self)
-        let ymin = CGRectGetMinY(self)
-        let ymax = CGRectGetMaxY(self)
+        let xmin = self.minX
+        let xmax = self.maxX
+        let ymin = self.minY
+        let ymax = self.maxY
         
         // Ax + By = c
         // -> x = (c - By)/A
@@ -158,18 +158,18 @@ extension CGRect : BoundaryType {
     }
     
     public func pointOnBorder(point: CGPoint) -> Line? {
-        if point.on(bottomEdge) { return bottomEdge }
-        else if point.on(rightEdge) { return rightEdge }
-        else if point.on(topEdge) { return topEdge }
-        else if point.on(leftEdge) { return leftEdge }
+        if point.on(line: bottomEdge) { return bottomEdge }
+        else if point.on(line: rightEdge) { return rightEdge }
+        else if point.on(line: topEdge) { return topEdge }
+        else if point.on(line: leftEdge) { return leftEdge }
         else { return nil }
     }
     
     public func intersects(line: Line) -> Line? {
-        if bottomEdge.intersects(line) { return bottomEdge }
-        else if rightEdge.intersects(line) { return rightEdge }
-        else if topEdge.intersects(line) { return topEdge }
-        else if leftEdge.intersects(line) { return leftEdge }
+        if bottomEdge.intersects(line: line) { return bottomEdge }
+        else if rightEdge.intersects(line: line) { return rightEdge }
+        else if topEdge.intersects(line: line) { return topEdge }
+        else if leftEdge.intersects(line: line) { return leftEdge }
         else { return nil }
     }
 }
@@ -190,12 +190,12 @@ public struct ConvexPolygon : BoundaryType {
     public init(lines: [Line]) {
         if lines.count < 3 {
             edges = []
-            maximumBounds = CGRectZero
+            maximumBounds = CGRect.zero
         }
         else {
             // This accounts for all vertices
-            let xsort = lines.sort{ $0.p0.x < $1.p0.x }
-            let ysort = lines.sort{ $0.p0.y < $1.p0.y }
+            let xsort = lines.sorted{ $0.p0.x < $1.p0.x }
+            let ysort = lines.sorted{ $0.p0.y < $1.p0.y }
             let xmin = xsort.first!.p0.x
             let ymin = ysort.first!.p0.y
             let xmax = xsort.last!.p0.x
@@ -214,7 +214,7 @@ public struct ConvexPolygon : BoundaryType {
     public init(vertices: [CGPoint]) {
         if vertices.count < 3 {
             edges = []
-            maximumBounds = CGRectZero
+            maximumBounds = CGRect.zero
         }
         else {
             var lines: [Line] = []
@@ -227,8 +227,8 @@ public struct ConvexPolygon : BoundaryType {
                 }
             }
             
-            let xsort = vertices.sort{ $0.x < $1.x }
-            let ysort = vertices.sort{ $0.y < $1.y }
+            let xsort = vertices.sorted{ $0.x < $1.x }
+            let ysort = vertices.sorted{ $0.y < $1.y }
             let xmin = xsort.first!.x
             let ymin = ysort.first!.y
             let xmax = xsort.last!.x
@@ -239,15 +239,15 @@ public struct ConvexPolygon : BoundaryType {
         }
     }
     
-    private let maximumBounds: CGRect
+    fileprivate let maximumBounds: CGRect
     
     public var borders: [Line] {
         return edges
     }
     
-    private let parallelEpsilon: CGFloat = 1.0E-10
-    public func clipVertices(segment: Segment) -> Line? {
-        guard let line = maximumBounds.clipVertices(segment) else { return nil }
+    fileprivate let parallelEpsilon: CGFloat = 1.0E-10
+    public func clipVertices(of segment: Segment) -> Line? {
+        guard let line = maximumBounds.clipVertices(of: segment) else { return nil }
         
         guard line.p0 != line.p1 else {
             // This is a point. Check if this point is within the polygon
@@ -263,8 +263,8 @@ public struct ConvexPolygon : BoundaryType {
         
         for edge in edges {
             let e = edge.p1-edge.p0
-            let n = e.cross(line.p0-edge.p0)
-            let d = -e.cross(ds)
+            let n = e.cross(point: line.p0-edge.p0)
+            let d = -e.cross(point: ds)
             if fabs(d) < parallelEpsilon {
                 if n < 0 {
                     // Segment is nearly parallel with edge and s.p0 is outside the edge
@@ -301,7 +301,7 @@ public struct ConvexPolygon : BoundaryType {
         return Line(p0: line.p0 + ds*Float(te), p1: line.p0 + ds*Float(tl))
     }
     
-    public func contains(point: CGPoint) -> Bool {
+    public func contains(_ point: CGPoint) -> Bool {
         var crossingNumber = 0
         for edge in edges {
             if (edge.p0.y <= point.y && edge.p1.y > point.y) || (edge.p0.y > point.y && edge.p1.y <= point.y) {
@@ -317,14 +317,14 @@ public struct ConvexPolygon : BoundaryType {
     
     public func pointOnBorder(point: CGPoint) -> Line? {
         for edge in edges {
-            if point.on(edge) { return edge }
+            if point.on(line: edge) { return edge }
         }
         return nil
     }
     
     public func intersects(line: Line) -> Line? {
         for edge in edges {
-            if edge.intersects(line) { return edge }
+            if edge.intersects(line: line) { return edge }
         }
         return nil
     }

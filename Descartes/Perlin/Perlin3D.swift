@@ -9,32 +9,33 @@
 import Foundation
 import GLKit
 import SceneKit
+import GameplayKit
 
 public struct Perlin3D {
-    private let octaves: Int
-    private let frequency: Float
-    private let amplitude: Float
-    private let seed: Int
+    fileprivate let octaves: Int
+    fileprivate let frequency: Float
+    fileprivate let amplitude: Float
+    fileprivate let seed: UInt64
+    fileprivate let random: GKRandom
     
-    internal var p: [Int] = Array(count: doubleBplus2, repeatedValue: 0)
-    internal var g3: [GLKVector3] = Array(count: doubleBplus2, repeatedValue: GLKVector3Make(0, 0, 0))
+    internal var p: [Int] = Array(repeating: 0, count: doubleBplus2)
+    internal var g3: [GLKVector3] = Array(repeating: GLKVector3Make(0, 0, 0), count: doubleBplus2)
     
-    public init(octaves: Int, frequency: Float, amplitude: Float, seed: Int) {
+    public init(octaves: Int, frequency: Float, amplitude: Float, seed: UInt64) {
         self.octaves = octaves
         self.frequency = frequency
         self.amplitude = amplitude
         self.seed = seed
-        
-        //        srand48(seed)
-        srand(UInt32(seed))
+        self.random = GKMersenneTwisterRandomSource(seed: seed)
         
         for i in 0..<B {
             p[i] = i
-            g3[i] = GLKVector3Normalize(GLKVector3Make(generateRandom, generateRandom, generateRandom))
+            g3[i] = GLKVector3Normalize(GLKVector3Make(generateRandom(random), generateRandom(random), generateRandom(random)))
         }
         
-        for i in (0..<B).reverse() {
-            let j = Int(rand()) % B
+        for i in (0..<B).reversed() {
+            let j = random.nextInt(upperBound: Int.max) % B
+            guard i != j else { continue }
             swap(&p[i], &p[j])
         }
         
@@ -46,35 +47,35 @@ public struct Perlin3D {
 }
 
 public extension Perlin3D {
-    public func noise(vector: GLKVector3) -> Float {
+    public func noise(for vector: GLKVector3) -> Float {
         var amp = amplitude
         var vec = GLKVector3MultiplyScalar(vector, frequency)
         var result: Float = 0
         for _ in 0..<octaves {
-            result += generate3DNoise(vec)*amp
+            result += generate3DNoise(for: vec)*amp
             vec = GLKVector3MultiplyScalar(vec, 2)
             amp *= 0.5
         }
         return result
     }
     
-    public func noise(vector: SCNVector3) -> Float {
-        return noise(SCNVector3ToGLKVector3(vector))
+    public func noise(for vector: SCNVector3) -> Float {
+        return noise(for: SCNVector3ToGLKVector3(vector))
     }
     
     /// Returns a value between [0, 1] regardless of the amplitude used
-    public func normalizedNoise(vector: GLKVector3) -> Float {
-        return (noise(vector) + amplitude)/(2*amplitude)
+    public func normalizedNoise(for vector: GLKVector3) -> Float {
+        return (noise(for: vector) + amplitude)/(2*amplitude)
     }
     
     /// Returns a value between [0, 1] regardless of the amplitude used
-    public func normalizedNoise(vector: SCNVector3) -> Float {
-        return normalizedNoise(SCNVector3ToGLKVector3(vector))
+    public func normalizedNoise(for vector: SCNVector3) -> Float {
+        return normalizedNoise(for: SCNVector3ToGLKVector3(vector))
     }
 }
 
 private extension Perlin3D {
-    private func generate3DNoise(vec: GLKVector3) -> Float {
+    func generate3DNoise(for vec: GLKVector3) -> Float {
         let x = Table(value: vec.x)
         let y = Table(value: vec.y)
         let z = Table(value: vec.z)
@@ -99,7 +100,7 @@ private extension Perlin3D {
         return sz.lerp(a: q, b: r)
     }
     
-    private func at3(vector: GLKVector3, _ rx: Float, _ ry: Float, _ rz: Float) -> Float {
+    func at3(_ vector: GLKVector3, _ rx: Float, _ ry: Float, _ rz: Float) -> Float {
         return (rx * vector.x + ry * vector.y + rz * vector.z)
     }
 }

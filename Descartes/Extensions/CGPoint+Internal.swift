@@ -17,12 +17,12 @@ internal extension CGPoint {
 
 internal extension CGPoint {
     internal var normalized: CGPoint {
-        guard x != 0 && y != 0 else { return CGPointZero }
+        guard x != 0 && y != 0 else { return CGPoint.zero }
         let s = 1/sqrt(self.x*self.x + self.y*self.y)
         return CGPoint(x: self.x*s, y: self.y*s)
     }
     
-    internal func distance(point: CGPoint) -> Float {
+    internal func distance(to point: CGPoint) -> Float {
         let dx = Float(self.x - point.x)
         let dy = Float(self.y - point.y)
         return sqrt((dx * dx) + (dy * dy))
@@ -36,8 +36,8 @@ internal extension CGPoint {
         return true
     }
     
-    internal func compareYThenX(point: CGPoint) -> Bool {
-        return CGPoint.compareYThenX(self, point1: point)
+    internal func compareYThenX(with point: CGPoint) -> Bool {
+        return CGPoint.compareYThenX(point0: self, point1: point)
     }
     
     internal func dot(point: CGPoint) -> CGFloat {
@@ -50,24 +50,24 @@ internal extension CGPoint {
 }
 
 extension CGPoint {
-    internal func colinear(line: Line) -> Bool {
+    internal func colinear(with line: Line) -> Bool {
         let ab = line.vector
         let ac = line.p1-self
-        return ab.cross(ac) == 0
+        return ab.cross(point: ac) == 0
     }
     
-    private var epsilon: CGFloat {
+    fileprivate var epsilon: CGFloat {
         return 0.01
     }
     internal func on(line: Line) -> Bool {
         let ab = line.vector
         let ac = line.p1-self
-        guard abs(ab.cross(ac)) < epsilon else { return false }
+        guard abs(ab.cross(point: ac)) < epsilon else { return false }
         
-        let kac = ac.dot(ab)
+        let kac = ac.dot(point: ab)
         if kac < 0 { return false }
         if kac == 0 { return true } // Conincide with extremepoint
-        let kab = ab.dot(ab)
+        let kab = ab.dot(point: ab)
         if kac > kab { return false }
         if kac == kab { return true } // Conincide with extremepoint
         return true // On line
@@ -83,7 +83,7 @@ extension CGPoint : Hashable {
 }
 
 internal func ==(lhs: CGPoint, rhs: CGPoint) -> Bool {
-    return lhs.distance(rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)
+    return lhs.distance(to: rhs) < 0.000001 //CGPointEqualToPoint(lhs, rhs)
 }
 
 internal func * (point: CGPoint, value: Float) -> CGPoint {

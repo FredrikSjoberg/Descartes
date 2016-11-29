@@ -25,15 +25,16 @@ public struct Line : Equatable {
         let r = vector
         let s = line.vector
         
-        let cxr = c.cross(r)
-        let cxs = c.cross(s)
-        let rxs = r.cross(s)
+        let cxr = c.cross(point: r)
+        let cxs = c.cross(point: s)
+        let rxs = r.cross(point: s)
         
         // Lines are colinear.
         if cxr == 0 {
             // Only intersect if they overlap
-            return ((line.p0.x - p0.x < 0) != (line.p0.x - p1.x < 0))
-                || ((line.p0.y - p0.y < 0) != (line.p0.y - p1.y < 0))
+            let ol1 = ((line.p0.x - p0.x < 0) != (line.p0.x - p1.x < 0))
+            let ol2 = ((line.p0.y - p0.y < 0) != (line.p0.y - p1.y < 0))
+            return ol1 || ol2
         }
         
         // Parallel

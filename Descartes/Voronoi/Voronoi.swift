@@ -10,12 +10,12 @@ import Foundation
 import CoreGraphics
 
 public class Voronoi {
-    private let eventQueue: EventQueue
-    private let beachLine: BeachLine
-    private let siteList: SiteList
-    private var edges: [Edge] = []
-    private var halfedges: [Halfedge] = []
-    private let bottomMostSite: Site!
+    fileprivate let eventQueue: EventQueue
+    fileprivate let beachLine: BeachLine
+    fileprivate let siteList: SiteList
+    fileprivate var edges: [Edge] = []
+    fileprivate var halfedges: [Halfedge] = []
+    fileprivate let bottomMostSite: Site!
     
     public let boundary: BoundaryType
     
@@ -38,7 +38,7 @@ public class Voronoi {
         }
     }
     
-    private func fortunesAlgorithm() {
+    fileprivate func fortunesAlgorithm() {
         // We now have an initial structure set up.
         // From now on we might generate intersections
         // Note: the eventQueue is still empty, as no intersections have been possible yet
@@ -48,7 +48,7 @@ public class Voronoi {
             
             if let sitePoint = nextSite, let circlePoint = nextCircle {
                 
-                if sitePoint.compareYThenX(circlePoint) {
+                if sitePoint.compareYThenX(with: circlePoint) {
                     // Site Event
                     processSiteEvent()
                 }
@@ -71,38 +71,38 @@ public class Voronoi {
             }
         }
         
-        edges.forEach{ $0.clipVertices(boundary) }
+        edges.forEach{ $0.clipVertices(by: boundary) }
     }
     
     /// Adds halfedges to the beachline
-    private func processSiteEvent() {
+    fileprivate func processSiteEvent() {
         if let newSite = siteList.pop() {
-            let lbnd = beachLine.leftNeighbor(newSite.point)
+            let lbnd = beachLine.leftNeighbor(for: newSite.point)
             // Found a leftNeighbor, process as usual
             let rbnd = lbnd.right
             
-            let bottomSite = (lbnd.edge == nil ? bottomMostSite : lbnd.edge!.site(lbnd.orientation!.opposite)) // TODO: Implicit unwrapping is terrible!
+            let bottomSite = (lbnd.edge == nil ? bottomMostSite! : lbnd.edge!.site(with: lbnd.orientation!.opposite)) // TODO: Implicit unwrapping is terrible!
             
             let edge = Edge(left: bottomSite, right: newSite)
             edges.append(edge)
             
-            let bisector0 = Halfedge(edge: edge, orientation: .Left)
+            let bisector0 = Halfedge(edge: edge, orientation: .left)
             halfedges.append(bisector0)
-            beachLine.insert(bisector0, rightOf: lbnd)
+            beachLine.insert(halfedge: bisector0, rightOf: lbnd)
             
-            if let vertex = lbnd.intersects(bisector0) {
+            if let vertex = lbnd.intersects(other: bisector0) {
                 let intersection = TransformedVertex(vertex: vertex, relativeTo: newSite)
-                eventQueue.remove(lbnd)
-                eventQueue.insert(lbnd, withIntersection: intersection)
+                eventQueue.remove(halfedge: lbnd)
+                eventQueue.insert(halfedge: lbnd, withIntersection: intersection)
             }
             
-            let bisector1 = Halfedge(edge: edge, orientation: .Right)
+            let bisector1 = Halfedge(edge: edge, orientation: .right)
             halfedges.append(bisector1)
-            beachLine.insert(bisector1, rightOf: bisector0)
+            beachLine.insert(halfedge: bisector1, rightOf: bisector0)
             
-            if let vertex = rbnd?.intersects(bisector1) {
+            if let vertex = rbnd?.intersects(other: bisector1) {
                 let intersecton = TransformedVertex(vertex: vertex, relativeTo: newSite)
-                eventQueue.insert(bisector1, withIntersection: intersecton)
+                eventQueue.insert(halfedge: bisector1, withIntersection: intersecton)
             }
         }
     }
@@ -111,7 +111,7 @@ public class Voronoi {
     /// Consider sites (s-1, s, s+1) forming a site event E (ie an intersection of 2 halfedges) in the event queue.
     /// Processing the event amounts to removing the 2 halfedges from the beachline and creating a new breakpoint (tracing out a new edge) from (s-1, s+1).
     /// Finaly, we need to check if the new halfedge intersects with any halfedges to the left or right.
-    private func processCircleEvent() {
+    fileprivate func processCircleEvent() {
         if let lbnd = eventQueue.pop() {
             // The point is required to exist here. We cant add a halfedge to the eventQueue without specifying an intersectionVertex
             let point = lbnd.intersectionVertex!.actualPoint
@@ -120,39 +120,39 @@ public class Voronoi {
             let llbnd = lbnd.left!
             let rrbnd = rbnd?.right
             
-            let bSite = (lbnd.edge == nil ? bottomMostSite : lbnd.edge!.site(lbnd.orientation!))
-            let tSite = (rbnd?.edge == nil ? bottomMostSite : rbnd!.edge!.site(rbnd!.orientation!.opposite))
+            let bSite = (lbnd.edge == nil ? bottomMostSite! : lbnd.edge!.site(with: lbnd.orientation!))
+            let tSite = (rbnd?.edge == nil ? bottomMostSite! : rbnd!.edge!.site(with: rbnd!.orientation!.opposite))
             
-            lbnd.edge?.setVertex(point, orientation: lbnd.orientation!)
+            lbnd.edge?.set(vertex: point, with: lbnd.orientation!)
             
             if let rbnd = rbnd {
-                rbnd.edge?.setVertex(point, orientation: rbnd.orientation!)
-                eventQueue.remove(rbnd)
-                beachLine.remove(rbnd)
+                rbnd.edge?.set(vertex: point, with: rbnd.orientation!)
+                eventQueue.remove(halfedge: rbnd)
+                beachLine.remove(halfedge: rbnd)
             }
-            beachLine.remove(lbnd)
+            beachLine.remove(halfedge: lbnd)
             
             let bottomSite = (bSite.point.y > tSite.point.y ? tSite : bSite)
             let topSite = (bottomSite == bSite ? tSite : bSite)
-            let orientation = (bottomSite == bSite ? Orientation.Left : Orientation.Right)
+            let orientation = (bottomSite == bSite ? Orientation.left : Orientation.right)
             
             let edge = Edge(left: bottomSite, right: topSite)
             edges.append(edge)
             
             let bisector = Halfedge(edge: edge, orientation: orientation)
             halfedges.append(bisector)
-            beachLine.insert(bisector, rightOf: llbnd)
-            edge.setVertex(point, orientation: orientation.opposite)
+            beachLine.insert(halfedge: bisector, rightOf: llbnd)
+            edge.set(vertex: point, with: orientation.opposite)
             
-            if let vertex = llbnd.intersects(bisector) {
+            if let vertex = llbnd.intersects(other: bisector) {
                 let intersection = TransformedVertex(vertex: vertex, relativeTo: bottomSite)
-                eventQueue.remove(llbnd)
-                eventQueue.insert(llbnd, withIntersection: intersection)
+                eventQueue.remove(halfedge: llbnd)
+                eventQueue.insert(halfedge: llbnd, withIntersection: intersection)
             }
             
-            if let vertex = rrbnd?.intersects(bisector) {
+            if let vertex = rrbnd?.intersects(other: bisector) {
                 let intersection = TransformedVertex(vertex: vertex, relativeTo: bottomSite)
-                eventQueue.insert(bisector, withIntersection: intersection)
+                eventQueue.insert(halfedge: bisector, withIntersection: intersection)
             }
         }
     }
@@ -173,13 +173,13 @@ public extension Voronoi {
     }
     
     public func region(point: CGPoint) -> Set<CGPoint> {
-        if let site = siteList.site(point) {
+        if let site = siteList.site(at: point) {
             return site.region
         }
         return Set()
     }
     
-    private struct BorderIntersection {
+    fileprivate struct BorderIntersection {
         let border: Line
         let atPoint: CGPoint
         let edge: Line
@@ -193,17 +193,17 @@ public extension Voronoi {
         
     }
     
-    private func borderPath(site: Site) -> [(raw: Line, intersected: Line)]? {
+    fileprivate func borderPath(for site: Site) -> [(raw: Line, intersected: Line)]? {
         let voronoiEdges = site.edges.flatMap{ $0.voronoiEdge }
         
         var intersections: [BorderIntersection] = []
         boundary.borders.forEach{ b in
             voronoiEdges.forEach{
-                if $0.p0.on(b) {
+                if $0.p0.on(line: b) {
                     intersections.append(BorderIntersection(border: b, atPoint: $0.p0, byLine: $0))
                 }
                 
-                if $0.p1.on(b) {
+                if $0.p1.on(line: b) {
                     intersections.append(BorderIntersection(border: b, atPoint: $0.p1, byLine: $0))
                 }
             }
@@ -219,8 +219,8 @@ public extension Voronoi {
                 let l0 = Line(p0: sitePoint, p1: intersection.border.p0)
                 let l1 = Line(p0: sitePoint, p1: intersection.border.p1)
                 
-                let t0 = voronoiEdges.reduce(true){ $0 && !$1.intersects(l0) }
-                let t1 = voronoiEdges.reduce(true){ $0 && !$1.intersects(l1) }
+                let t0 = voronoiEdges.reduce(true){ $0 && !$1.intersects(line: l0) }
+                let t1 = voronoiEdges.reduce(true){ $0 && !$1.intersects(line: l1) }
                 
                 if t0 {
                     borderLines.append((intersection.border, Line(p0: intersection.atPoint, p1: intersection.border.p0)))
@@ -241,9 +241,9 @@ public extension Voronoi {
     }
     
     /// Returns a ConvexPolygon with edges surrounding the site (including boundary edges if any), or nil if no site is found.
-    public func cellAt(point: CGPoint) -> ConvexPolygon? {
+    public func cell(at point: CGPoint) -> ConvexPolygon? {
         guard boundary.contains(point) else { return nil }
-        guard let site = siteList.site(point) else { return nil }
+        guard let site = siteList.site(at: point) else { return nil }
         
         let voronoiEdges = site.edges.flatMap{ $0.voronoiEdge }
         var queue = voronoiEdges
@@ -253,16 +253,16 @@ public extension Voronoi {
         guard queue.count > 0 else { return ConvexPolygon(lines: boundary.borders) }
         
         var remainingBorders = boundary.borders
-        if let borderLines = borderPath(site) {
+        if let borderLines = borderPath(for: site) {
             let intersected = borderLines.map{ $0.intersected }
             let raw = borderLines.map{ $0.raw }
             
             raw.forEach{
-                if let index = remainingBorders.indexOf($0) {
-                    remainingBorders.removeAtIndex(index)
+                if let index = remainingBorders.index(of: $0) {
+                    remainingBorders.remove(at: index)
                 }
             }
-            queue.appendContentsOf(intersected)
+            queue.append(contentsOf: intersected)
         }
         
         // Sort them in CCW order
@@ -272,23 +272,23 @@ public extension Voronoi {
             let last = result.last!.p1
             
             for line in queue {
-                let index = queue.indexOf(line)!
+                let index = queue.index(of: line)!
                 
                 if last == line.p0 {
                     result.append(line)
-                    queue.removeAtIndex(index)
+                    queue.remove(at: index)
                 }
                 else if last == line.p1 {
                     result.append(Line(p0: line.p1, p1: line.p0))
-                    queue.removeAtIndex(index)
+                    queue.remove(at: index)
                 }
                 else if first == line.p1 {
-                    result.insert(line, atIndex: 0)
-                    queue.removeAtIndex(index)
+                    result.insert(line, at: 0)
+                    queue.remove(at: index)
                 }
                 else if first == line.p0 {
-                    result.insert(Line(p0: line.p1, p1: line.p0), atIndex: 0)
-                    queue.removeAtIndex(index)
+                    result.insert(Line(p0: line.p1, p1: line.p0), at: 0)
+                    queue.remove(at: index)
                 }
             }
         }
@@ -304,10 +304,10 @@ public extension Voronoi {
                 result.append(Line(p0: $0.p1, p1: $0.p0))
             }
             else if first == $0.p1 {
-                result.insert($0, atIndex: 0)
+                result.insert($0, at: 0)
             }
             else if first == $0.p0 {
-                result.insert(Line(p0: $0.p1, p1: $0.p0), atIndex: 0)
+                result.insert(Line(p0: $0.p1, p1: $0.p0), at: 0)
             }
         }
         

@@ -10,9 +10,9 @@ import Foundation
 import CoreGraphics
 
 internal class SiteList {
-    private let sites: [Site]
-    private let locations: [CGPoint : Site]
-    private var currentIndex = 0
+    fileprivate let sites: [Site]
+    fileprivate let locations: [CGPoint : Site]
+    fileprivate var currentIndex = 0
     
     internal init(points: [CGPoint]) {
         var dict: [CGPoint : Site] = [:]
@@ -28,7 +28,7 @@ internal class SiteList {
             }
         }
         
-        sites = arr.sort{ $0.point.compareYThenX($1.point) }
+        sites = arr.sorted{ $0.point.compareYThenX(with: $1.point) }
         locations = dict
         currentIndex = 0
     }
@@ -52,10 +52,10 @@ extension SiteList {
     }
     
     internal func containsSite(point: CGPoint) -> Bool {
-        return site(point) != nil
+        return site(at: point) != nil
     }
     
-    internal func site(point: CGPoint) -> Site? {
+    internal func site(at point: CGPoint) -> Site? {
         return locations[point]
     }
 }

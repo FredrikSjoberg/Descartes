@@ -57,7 +57,7 @@ extension CGRect {
 
 extension CGRect {
     func intersects(lines: [Line]) -> Bool {
-        return lines.map{ intersects($0) != nil }.reduce(false) {
+        return lines.map{ intersects(line: $0) != nil }.reduce(false) {
             (sum, next) in
             return sum || next
         }
@@ -76,8 +76,8 @@ extension CGRect {
      - returns:
      An array of subdivided, aspect preserved rectangles matching the intersections with supplied lines.
     */
-    public func splitIntersect(lines: [Line], minSize: CGSize, increaseDepth: Bool = false) -> [CGRect] {
-        guard intersects(lines) else { return [self] }
+    public func splitIntersect(_ lines: [Line], minSize: CGSize, increaseDepth: Bool = false) -> [CGRect] {
+        guard intersects(lines: lines) else { return [self] }
         if quarterSize > minSize {
             return quarternize().flatMap{ $0.splitIntersect(lines, minSize: minSize, increaseDepth: increaseDepth) }
         }

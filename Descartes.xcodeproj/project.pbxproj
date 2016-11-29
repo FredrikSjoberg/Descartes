@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		7622AEF01C74693B0055BA9C /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */; };
 		76CF76891B5C376D00A2FCC8 /* Descartes.h in Headers */ = {isa = PBXBuildFile; fileRef = 76CF76881B5C376D00A2FCC8 /* Descartes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		76CF768F1B5C376D00A2FCC8 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; };
-		76CF76961B5C376D00A2FCC8 /* DescartesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */; };
 		76CF770A1B5D74E800A2FCC8 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FB1B5D74E800A2FCC8 /* Edge.swift */; };
 		76CF770B1B5D74E800A2FCC8 /* Halfedge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */; };
 		76CF770C1B5D74E800A2FCC8 /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FD1B5D74E800A2FCC8 /* Site.swift */; };
@@ -42,22 +40,11 @@
 		76D50AF31C73B1E200DBB660 /* Boundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AF21C73B1E200DBB660 /* Boundary.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		76CF76901B5C376D00A2FCC8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 76CF767A1B5C376D00A2FCC8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 76CF76821B5C376D00A2FCC8;
-			remoteInfo = Descartes;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		76CF76831B5C376D00A2FCC8 /* Descartes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Descartes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CF76871B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76CF76881B5C376D00A2FCC8 /* Descartes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Descartes.h; sourceTree = "<group>"; };
-		76CF768E1B5C376D00A2FCC8 /* DescartesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CF76941B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartesTests.swift; sourceTree = "<group>"; };
 		76CF76FB1B5D74E800A2FCC8 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
@@ -99,14 +86,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		76CF768B1B5C376D00A2FCC8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				76CF768F1B5C376D00A2FCC8 /* Descartes.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -123,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				76CF76831B5C376D00A2FCC8 /* Descartes.framework */,
-				76CF768E1B5C376D00A2FCC8 /* DescartesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -288,24 +266,6 @@
 			productReference = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		76CF768D1B5C376D00A2FCC8 /* DescartesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 76CF769C1B5C376D00A2FCC8 /* Build configuration list for PBXNativeTarget "DescartesTests" */;
-			buildPhases = (
-				76CF768A1B5C376D00A2FCC8 /* Sources */,
-				76CF768B1B5C376D00A2FCC8 /* Frameworks */,
-				76CF768C1B5C376D00A2FCC8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				76CF76911B5C376D00A2FCC8 /* PBXTargetDependency */,
-			);
-			name = DescartesTests;
-			productName = DescartesTests;
-			productReference = 76CF768E1B5C376D00A2FCC8 /* DescartesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -319,10 +279,8 @@
 				TargetAttributes = {
 					76CF76821B5C376D00A2FCC8 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 86UU6J7RQ5;
-					};
-					76CF768D1B5C376D00A2FCC8 = {
-						CreatedOnToolsVersion = 6.3.2;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -339,7 +297,6 @@
 			projectRoot = "";
 			targets = (
 				76CF76821B5C376D00A2FCC8 /* Descartes */,
-				76CF768D1B5C376D00A2FCC8 /* DescartesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,13 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76D50A931C72673200DBB660 /* LICENSE in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		76CF768C1B5C376D00A2FCC8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,23 +349,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		76CF768A1B5C376D00A2FCC8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				76CF76961B5C376D00A2FCC8 /* DescartesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		76CF76911B5C376D00A2FCC8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 76CF76821B5C376D00A2FCC8 /* Descartes */;
-			targetProxy = 76CF76901B5C376D00A2FCC8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		76CF76971B5C376D00A2FCC8 /* Debug */ = {
@@ -514,16 +448,19 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Descartes/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FredrikSjoberg.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -533,48 +470,19 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Descartes/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FredrikSjoberg.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		76CF769D1B5C376D00A2FCC8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DescartesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FredrikSjoberg.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		76CF769E1B5C376D00A2FCC8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DescartesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FredrikSjoberg.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -595,15 +503,6 @@
 			buildConfigurations = (
 				76CF769A1B5C376D00A2FCC8 /* Debug */,
 				76CF769B1B5C376D00A2FCC8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		76CF769C1B5C376D00A2FCC8 /* Build configuration list for PBXNativeTarget "DescartesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				76CF769D1B5C376D00A2FCC8 /* Debug */,
-				76CF769E1B5C376D00A2FCC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

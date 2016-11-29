@@ -7,33 +7,33 @@
 //
 
 import Foundation
-
+import GameplayKit
 
 public struct Perlin1D {
-    private let octaves: Int
-    private let frequency: Float
-    private let amplitude: Float
-    private let seed: Int
+    fileprivate let octaves: Int
+    fileprivate let frequency: Float
+    fileprivate let amplitude: Float
+    fileprivate let seed: UInt64
+    fileprivate let random: GKRandom
     
-    internal var p: [Int] = Array(count: doubleBplus2, repeatedValue: 0)
-    internal var g1: [Float] = Array(count: doubleBplus2, repeatedValue: 0)
+    internal var p: [Int] = Array(repeating: 0, count: doubleBplus2)
+    internal var g1: [Float] = Array(repeating: 0, count: doubleBplus2)
     
-    public init(octaves: Int, frequency: Float, amplitude: Float, seed: Int) {
+    public init(octaves: Int, frequency: Float, amplitude: Float, seed: UInt64) {
         self.octaves = octaves
         self.frequency = frequency
         self.amplitude = amplitude
         self.seed = seed
-        
-        //        srand48(seed)
-        srand(UInt32(seed))
+        self.random = GKMersenneTwisterRandomSource(seed: seed)
         
         for i in 0..<B {
             p[i] = i
-            g1[i] = generateRandom
+            g1[i] = generateRandom(random)
         }
         
-        for i in (0..<B).reverse() {
-            let j = Int(rand()) % B
+        for i in (0..<B).reversed() {
+            let j = random.nextInt(upperBound: Int.max) % B
+            guard i != j else { continue }
             swap(&p[i], &p[j])
         }
         
@@ -45,12 +45,12 @@ public struct Perlin1D {
 }
 
 public extension Perlin1D {
-    public func noise(value: Float) -> Float {
+    public func noise(for value: Float) -> Float {
         var amp = amplitude
         var vec = value*frequency
         var result: Float = 0
         for _ in 0..<octaves {
-            result += generate1DNoise(vec)*amp
+            result += generate1DNoise(for: vec)*amp
             vec = vec*2
             amp *= 0.5
         }
@@ -58,13 +58,13 @@ public extension Perlin1D {
     }
     
     /// Returns a value between [0, 1] regardless of the amplitude used
-    public func normalizedNoise(value: Float) -> Float {
-        return (noise(value) + amplitude)/(2*amplitude)
+    public func normalizedNoise(for value: Float) -> Float {
+        return (noise(for: value) + amplitude)/(2*amplitude)
     }
 }
 
 private extension Perlin1D {
-    private func generate1DNoise(value: Float) -> Float {
+    func generate1DNoise(for value: Float) -> Float {
         let t = Table(value: value)
         
         let sx = t.r0.sCurve

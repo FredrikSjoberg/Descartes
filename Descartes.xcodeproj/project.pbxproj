@@ -16,7 +16,7 @@
 		76C6B7421E03E77A00A53537 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76C6B73D1E03E73700A53537 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76C6B7431E03E77C00A53537 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76C6B73E1E03E73700A53537 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76C6B7441E03E77E00A53537 /* Descartes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		76C6B7461E03E95C00A53537 /* LineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7451E03E95C00A53537 /* LineSpec.swift */; };
+		76C6B74C1E03FD2500A53537 /* LineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B74B1E03FD2500A53537 /* LineSpec.swift */; };
 		76CF76891B5C376D00A2FCC8 /* Descartes.h in Headers */ = {isa = PBXBuildFile; fileRef = 76CF76881B5C376D00A2FCC8 /* Descartes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76CF770A1B5D74E800A2FCC8 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FB1B5D74E800A2FCC8 /* Edge.swift */; };
 		76CF770B1B5D74E800A2FCC8 /* Halfedge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */; };
@@ -82,12 +82,11 @@
 		76C6B7361E03E69100A53537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76C6B73D1E03E73700A53537 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Descartes/Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		76C6B73E1E03E73700A53537 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Descartes/Carthage/Build/iOS/Quick.framework; sourceTree = SOURCE_ROOT; };
-		76C6B7451E03E95C00A53537 /* LineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSpec.swift; sourceTree = "<group>"; };
+		76C6B74B1E03FD2500A53537 /* LineSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineSpec.swift; sourceTree = "<group>"; };
 		76CF76831B5C376D00A2FCC8 /* Descartes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Descartes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CF76871B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76CF76881B5C376D00A2FCC8 /* Descartes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Descartes.h; sourceTree = "<group>"; };
 		76CF76941B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartesTests.swift; sourceTree = "<group>"; };
 		76CF76FB1B5D74E800A2FCC8 /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
 		76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Halfedge.swift; sourceTree = "<group>"; };
 		76CF76FD1B5D74E800A2FCC8 /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
@@ -149,6 +148,35 @@
 			path = DescartesTests;
 			sourceTree = "<group>";
 		};
+		76C6B7471E03FD2500A53537 /* ExtensionTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExtensionTests;
+			sourceTree = "<group>";
+		};
+		76C6B7481E03FD2500A53537 /* InternalTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InternalTests;
+			sourceTree = "<group>";
+		};
+		76C6B7491E03FD2500A53537 /* PerlinTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PerlinTests;
+			sourceTree = "<group>";
+		};
+		76C6B74A1E03FD2500A53537 /* VoronoiTests */ = {
+			isa = PBXGroup;
+			children = (
+				76C6B74B1E03FD2500A53537 /* LineSpec.swift */,
+			);
+			path = VoronoiTests;
+			sourceTree = "<group>";
+		};
 		76CF76791B5C376D00A2FCC8 = {
 			isa = PBXGroup;
 			children = (
@@ -195,8 +223,10 @@
 		76CF76921B5C376D00A2FCC8 /* DescartesTests */ = {
 			isa = PBXGroup;
 			children = (
-				76CF76951B5C376D00A2FCC8 /* DescartesTests.swift */,
-				76C6B7451E03E95C00A53537 /* LineSpec.swift */,
+				76C6B7471E03FD2500A53537 /* ExtensionTests */,
+				76C6B7481E03FD2500A53537 /* InternalTests */,
+				76C6B7491E03FD2500A53537 /* PerlinTests */,
+				76C6B74A1E03FD2500A53537 /* VoronoiTests */,
 				76CF76931B5C376D00A2FCC8 /* Supporting Files */,
 			);
 			path = DescartesTests;
@@ -416,7 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76C6B7461E03E95C00A53537 /* LineSpec.swift in Sources */,
+				76C6B74C1E03FD2500A53537 /* LineSpec.swift in Sources */,
 				76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,13 +16,19 @@ class TransformedVertexSpec: QuickSpec {
         let site = Site(point: CGPoint(x: 10, y: 10))
         let point = CGPoint(x: 10, y: 6)
         let distance:Float = sqrt(4*4)
+        let vertex = TransformedVertex(vertex: point, relativeTo: site)
         describe("init") {
+            let yStar = Float(point.y) + distance
             it("should calculate correct transformation for y coordinate in Voronoi space") {
-                let vertex = TransformedVertex(vertex: point, relativeTo: site)
                 
-                let yStar = Float(point.y) + distance
                 expect(vertex.yStar) == yStar
             }
+            
+            it("should return a transformed point") {
+                expect(vertex.transformedPoint) == CGPoint(x: Float(point.x), y: yStar)
+            }
+            
         }
+        
     }
 }

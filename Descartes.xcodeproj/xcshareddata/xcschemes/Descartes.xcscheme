@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "76CF768D1B5C376D00A2FCC8"
+               BlueprintIdentifier = "76C6B7311E03E69100A53537"
                BuildableName = "DescartesTests.xctest"
                BlueprintName = "DescartesTests"
                ReferencedContainer = "container:Descartes.xcodeproj">
@@ -40,13 +40,14 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "76CF768D1B5C376D00A2FCC8"
+               BlueprintIdentifier = "76C6B7311E03E69100A53537"
                BuildableName = "DescartesTests.xctest"
                BlueprintName = "DescartesTests"
                ReferencedContainer = "container:Descartes.xcodeproj">

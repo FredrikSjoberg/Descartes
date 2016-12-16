@@ -8,7 +8,7 @@
 
 import XCTest
 
-class DescartesTests: XCTestCase {
+/*class DescartesTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -32,21 +32,4 @@ class DescartesTests: XCTestCase {
         }
     }
     
-}
-
-import Nimble
-import Quick
-class LineSpec: QuickSpec {
-    override func spec() {
-        describe("Line") {
-            it("is true") {
-                let first = true
-                let second = false
-                let third = true
-                
-                expect(first) == true
-                expect(second) == true
-            }
-        }
-    }
-}
+}*/

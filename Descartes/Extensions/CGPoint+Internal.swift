@@ -95,6 +95,10 @@ internal func + (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x+rhs.x, y: lhs.y+rhs.y)
 }
 
+internal func + (lhs: CGPoint, rhs: Float) -> CGPoint {
+    return CGPoint(x: lhs.x+CGFloat(rhs), y: lhs.y+CGFloat(rhs))
+}
+
 internal func - (lhs: CGPoint, rhs: CGPoint) -> CGPoint {
     return CGPoint(x: lhs.x-rhs.x, y: lhs.y-rhs.y)
 }

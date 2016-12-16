@@ -20,6 +20,7 @@
 		76C6B74E1E03FD6800A53537 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B74D1E03FD6800A53537 /* CGPointTests.swift */; };
 		76C6B7521E041BB900A53537 /* IntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7511E041BB900A53537 /* IntTests.swift */; };
 		76C6B7541E041C7100A53537 /* FloatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7531E041C7100A53537 /* FloatTests.swift */; };
+		76C6B7561E041E0C00A53537 /* GLKVectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7551E041E0C00A53537 /* GLKVectorTests.swift */; };
 		76CF76891B5C376D00A2FCC8 /* Descartes.h in Headers */ = {isa = PBXBuildFile; fileRef = 76CF76881B5C376D00A2FCC8 /* Descartes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76CF770A1B5D74E800A2FCC8 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FB1B5D74E800A2FCC8 /* Edge.swift */; };
 		76CF770B1B5D74E800A2FCC8 /* Halfedge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */; };
@@ -90,6 +91,7 @@
 		76C6B74F1E03FDED00A53537 /* DescartesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescartesTests.swift; sourceTree = "<group>"; };
 		76C6B7511E041BB900A53537 /* IntTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntTests.swift; sourceTree = "<group>"; };
 		76C6B7531E041C7100A53537 /* FloatTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatTests.swift; sourceTree = "<group>"; };
+		76C6B7551E041E0C00A53537 /* GLKVectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKVectorTests.swift; sourceTree = "<group>"; };
 		76CF76831B5C376D00A2FCC8 /* Descartes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Descartes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CF76871B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76CF76881B5C376D00A2FCC8 /* Descartes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Descartes.h; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				76C6B74D1E03FD6800A53537 /* CGPointTests.swift */,
 				76C6B7511E041BB900A53537 /* IntTests.swift */,
 				76C6B7531E041C7100A53537 /* FloatTests.swift */,
+				76C6B7551E041E0C00A53537 /* GLKVectorTests.swift */,
 			);
 			path = InternalTests;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76C6B74C1E03FD2500A53537 /* LineSpec.swift in Sources */,
+				76C6B7561E041E0C00A53537 /* GLKVectorTests.swift in Sources */,
 				76C6B74E1E03FD6800A53537 /* CGPointTests.swift in Sources */,
 				76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */,
 				76C6B7521E041BB900A53537 /* IntTests.swift in Sources */,

@@ -65,7 +65,7 @@ extension CGPoint {
         guard abs(ab.cross(point: ac)) < epsilon else { return false }
         
         let kac = ac.dot(point: ab)
-        if kac < 0 { return false }
+        if kac < 0 { return false } 
         if kac == 0 { return true } // Conincide with extremepoint
         let kab = ab.dot(point: ab)
         if kac > kab { return false }

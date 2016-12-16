@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7622AEF01C74693B0055BA9C /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */; };
+		7685AD3C1E044A0D0028BE04 /* TableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7685AD3B1E044A0D0028BE04 /* TableTests.swift */; };
 		76C6B7041E03DA5E00A53537 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 76C6B7031E03DA5E00A53537 /* Cartfile */; };
 		76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7341E03E69100A53537 /* DescartesTests.swift */; };
 		76C6B7371E03E69100A53537 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
+		7685AD3B1E044A0D0028BE04 /* TableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableTests.swift; sourceTree = "<group>"; };
 		76C6B7031E03DA5E00A53537 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		76C6B7321E03E69100A53537 /* DescartesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76C6B7341E03E69100A53537 /* DescartesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartesTests.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				76C6B7631E042A1400A53537 /* LineEquationTests.swift */,
 				76C6B7651E04363100A53537 /* OrientationTests.swift */,
 				76C6B7671E0436C200A53537 /* TransformedVertexTests.swift */,
+				7685AD3B1E044A0D0028BE04 /* TableTests.swift */,
 			);
 			path = InternalTests;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76C6B74C1E03FD2500A53537 /* LineSpec.swift in Sources */,
+				7685AD3C1E044A0D0028BE04 /* TableTests.swift in Sources */,
 				76C6B7661E04363100A53537 /* OrientationTests.swift in Sources */,
 				76C6B7611E0429E500A53537 /* GLKVectorTests.swift in Sources */,
 				76C6B7681E0436C200A53537 /* TransformedVertexTests.swift in Sources */,
@@ -721,6 +725,7 @@
 				76C6B73B1E03E69100A53537 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		76CF767D1B5C376D00A2FCC8 /* Build configuration list for PBXProject "Descartes" */ = {
 			isa = XCConfigurationList;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7622AEF01C74693B0055BA9C /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */; };
 		7685AD3C1E044A0D0028BE04 /* TableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7685AD3B1E044A0D0028BE04 /* TableTests.swift */; };
+		7685AD3E1E044ABE0028BE04 /* SegmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7685AD3D1E044ABE0028BE04 /* SegmentTests.swift */; };
 		76C6B7041E03DA5E00A53537 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 76C6B7031E03DA5E00A53537 /* Cartfile */; };
 		76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7341E03E69100A53537 /* DescartesTests.swift */; };
 		76C6B7371E03E69100A53537 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		7685AD3B1E044A0D0028BE04 /* TableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableTests.swift; sourceTree = "<group>"; };
+		7685AD3D1E044ABE0028BE04 /* SegmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentTests.swift; sourceTree = "<group>"; };
 		76C6B7031E03DA5E00A53537 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		76C6B7321E03E69100A53537 /* DescartesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76C6B7341E03E69100A53537 /* DescartesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartesTests.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				76C6B74B1E03FD2500A53537 /* LineSpec.swift */,
+				7685AD3D1E044ABE0028BE04 /* SegmentTests.swift */,
 			);
 			path = VoronoiTests;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */,
 				76C6B75F1E0429E500A53537 /* CGRectTests.swift in Sources */,
 				76C6B7601E0429E500A53537 /* FloatTests.swift in Sources */,
+				7685AD3E1E044ABE0028BE04 /* SegmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

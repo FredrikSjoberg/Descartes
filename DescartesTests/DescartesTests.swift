@@ -2,11 +2,10 @@
 //  DescartesTests.swift
 //  DescartesTests
 //
-//  Created by Fredrik Sjöberg on 19/07/15.
-//  Copyright (c) 2015 Fredrik Sjoberg. All rights reserved.
+//  Created by Fredrik Sjöberg on 16/12/16.
+//  Copyright © 2016 Fredrik Sjoberg. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
 class DescartesTests: XCTestCase {
@@ -23,14 +22,31 @@ class DescartesTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure() {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
     
+}
+
+import Nimble
+import Quick
+class LineSpec: QuickSpec {
+    override func spec() {
+        describe("Line") {
+            it("is true") {
+                let first = true
+                let second = false
+                let third = true
+                
+                expect(first) == true
+                expect(second) == true
+            }
+        }
+    }
 }

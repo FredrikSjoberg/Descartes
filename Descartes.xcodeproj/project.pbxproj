@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		7622AEF01C74693B0055BA9C /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */; };
 		76C6B7041E03DA5E00A53537 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 76C6B7031E03DA5E00A53537 /* Cartfile */; };
+		76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7341E03E69100A53537 /* DescartesTests.swift */; };
+		76C6B7371E03E69100A53537 /* Descartes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; };
+		76C6B73F1E03E73700A53537 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C6B73D1E03E73700A53537 /* Nimble.framework */; };
+		76C6B7401E03E73700A53537 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C6B73E1E03E73700A53537 /* Quick.framework */; };
+		76C6B7421E03E77A00A53537 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76C6B73D1E03E73700A53537 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76C6B7431E03E77C00A53537 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76C6B73E1E03E73700A53537 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76C6B7441E03E77E00A53537 /* Descartes.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 76CF76831B5C376D00A2FCC8 /* Descartes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76CF76891B5C376D00A2FCC8 /* Descartes.h in Headers */ = {isa = PBXBuildFile; fileRef = 76CF76881B5C376D00A2FCC8 /* Descartes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76CF770A1B5D74E800A2FCC8 /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FB1B5D74E800A2FCC8 /* Edge.swift */; };
 		76CF770B1B5D74E800A2FCC8 /* Halfedge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CF76FC1B5D74E800A2FCC8 /* Halfedge.swift */; };
@@ -41,9 +48,39 @@
 		76D50AF31C73B1E200DBB660 /* Boundary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D50AF21C73B1E200DBB660 /* Boundary.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		76C6B7381E03E69100A53537 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76CF767A1B5C376D00A2FCC8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76CF76821B5C376D00A2FCC8;
+			remoteInfo = Descartes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		76C6B7411E03E75D00A53537 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				76C6B7421E03E77A00A53537 /* Nimble.framework in CopyFiles */,
+				76C6B7431E03E77C00A53537 /* Quick.framework in CopyFiles */,
+				76C6B7441E03E77E00A53537 /* Descartes.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7622AEEF1C74693B0055BA9C /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		76C6B7031E03DA5E00A53537 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		76C6B7321E03E69100A53537 /* DescartesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DescartesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76C6B7341E03E69100A53537 /* DescartesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescartesTests.swift; sourceTree = "<group>"; };
+		76C6B7361E03E69100A53537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76C6B73D1E03E73700A53537 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Descartes/Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
+		76C6B73E1E03E73700A53537 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Descartes/Carthage/Build/iOS/Quick.framework; sourceTree = SOURCE_ROOT; };
 		76CF76831B5C376D00A2FCC8 /* Descartes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Descartes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CF76871B5C376D00A2FCC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76CF76881B5C376D00A2FCC8 /* Descartes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Descartes.h; sourceTree = "<group>"; };
@@ -81,6 +118,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		76C6B72F1E03E69100A53537 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76C6B73F1E03E73700A53537 /* Nimble.framework in Frameworks */,
+				76C6B7401E03E73700A53537 /* Quick.framework in Frameworks */,
+				76C6B7371E03E69100A53537 /* Descartes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		76CF767F1B5C376D00A2FCC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,11 +138,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76C6B7331E03E69100A53537 /* DescartesTests */ = {
+			isa = PBXGroup;
+			children = (
+				76C6B7341E03E69100A53537 /* DescartesTests.swift */,
+				76C6B7361E03E69100A53537 /* Info.plist */,
+			);
+			path = DescartesTests;
+			sourceTree = "<group>";
+		};
 		76CF76791B5C376D00A2FCC8 = {
 			isa = PBXGroup;
 			children = (
 				76CF76851B5C376D00A2FCC8 /* Descartes */,
 				76CF76921B5C376D00A2FCC8 /* DescartesTests */,
+				76C6B7331E03E69100A53537 /* DescartesTests */,
 				76CF76841B5C376D00A2FCC8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				76CF76831B5C376D00A2FCC8 /* Descartes.framework */,
+				76C6B7321E03E69100A53537 /* DescartesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +202,8 @@
 		76CF76931B5C376D00A2FCC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				76C6B73D1E03E73700A53537 /* Nimble.framework */,
+				76C6B73E1E03E73700A53537 /* Quick.framework */,
 				76CF76941B5C376D00A2FCC8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -251,6 +311,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		76C6B7311E03E69100A53537 /* DescartesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76C6B73C1E03E69100A53537 /* Build configuration list for PBXNativeTarget "DescartesTests" */;
+			buildPhases = (
+				76C6B72E1E03E69100A53537 /* Sources */,
+				76C6B72F1E03E69100A53537 /* Frameworks */,
+				76C6B7301E03E69100A53537 /* Resources */,
+				76C6B7411E03E75D00A53537 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76C6B7391E03E69100A53537 /* PBXTargetDependency */,
+			);
+			name = DescartesTests;
+			productName = DescartesTests;
+			productReference = 76C6B7321E03E69100A53537 /* DescartesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		76CF76821B5C376D00A2FCC8 /* Descartes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 76CF76991B5C376D00A2FCC8 /* Build configuration list for PBXNativeTarget "Descartes" */;
@@ -276,10 +355,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Fredrik Sjoberg";
 				TargetAttributes = {
+					76C6B7311E03E69100A53537 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 86UU6J7RQ5;
+						ProvisioningStyle = Automatic;
+					};
 					76CF76821B5C376D00A2FCC8 = {
 						CreatedOnToolsVersion = 6.3.2;
 						LastSwiftMigration = 0800;
@@ -300,11 +384,19 @@
 			projectRoot = "";
 			targets = (
 				76CF76821B5C376D00A2FCC8 /* Descartes */,
+				76C6B7311E03E69100A53537 /* DescartesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		76C6B7301E03E69100A53537 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		76CF76811B5C376D00A2FCC8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +409,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		76C6B72E1E03E69100A53537 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		76CF767E1B5C376D00A2FCC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,7 +455,60 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		76C6B7391E03E69100A53537 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76CF76821B5C376D00A2FCC8 /* Descartes */;
+			targetProxy = 76C6B7381E03E69100A53537 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		76C6B73A1E03E69100A53537 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 86UU6J7RQ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Descartes/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DescartesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.FredrikSjoberg.DescartesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		76C6B73B1E03E69100A53537 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = 86UU6J7RQ5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Descartes/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = DescartesTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.FredrikSjoberg.DescartesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		76CF76971B5C376D00A2FCC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -493,6 +646,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		76C6B73C1E03E69100A53537 /* Build configuration list for PBXNativeTarget "DescartesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76C6B73A1E03E69100A53537 /* Debug */,
+				76C6B73B1E03E69100A53537 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		76CF767D1B5C376D00A2FCC8 /* Build configuration list for PBXProject "Descartes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

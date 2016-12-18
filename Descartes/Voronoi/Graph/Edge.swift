@@ -74,7 +74,6 @@ extension Edge {
     
     internal var voronoiEdge: Line? {
         guard let vertices = clippedVertices else { return nil }
-        guard !vertices.p0.equalTo(vertices.p1) else { return nil }
         return Line(p0: vertices.p0, p1: vertices.p1)
     }
 }

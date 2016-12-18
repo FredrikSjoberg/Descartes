@@ -27,6 +27,10 @@ extension CGRect : BoundaryType {
         let p0 = segment.p0
         let p1 = segment.p1
         
+        if let point0 = p0, let point1 = p1, point0.equalTo(point1) {
+            return nil
+        }
+        
         let xmin = self.minX
         let xmax = self.maxX
         let ymin = self.minY

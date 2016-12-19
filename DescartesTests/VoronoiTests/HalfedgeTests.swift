@@ -145,5 +145,66 @@ class HalfedgeTests: QuickSpec {
                 expect(halfedge.intersects(other: ihalfedge)).toNot(beNil())
             }
         }
+        
+        describe("Left Of") {
+            let leftOf = CGPoint(x: 9, y: 10)
+            it("depends on orientation and locaion of point relative to edge's righSite") {
+                let rightOf = CGPoint(x: 11, y: 10)
+                expect(halfedge.isLeft(of: rightOf)).to(beTrue())
+                
+                let rightFacing = Halfedge(edge: edge, orientation: .right)
+                expect(rightFacing.isLeft(of: leftOf)).to(beFalse())
+            }
+            
+            it("requires edge") {
+                // NOTE: This test equates to the terrible asumption that any point is left of a halfedge without an associated edge. NOT a prudent way of thinking, since the side effects includes that dummy edges are allways left of any point.
+                let anyPoint = CGPoint(x: 5, y: 5)
+                expect(Halfedge.dummy().isLeft(of: anyPoint)).to(beTrue())
+            }
+            
+            it("depends on edge equation") {
+                expect(halfedge.isLeft(of: leftOf)).to(beFalse())
+                
+                let pt = CGPoint(x: 4, y: -4)
+                let is1 = Site(point: CGPoint(x: 10, y: -5))
+                let sedge = Edge(left: s0, right: is1)
+                let leftFacing = Halfedge(edge: sedge, orientation: .left)
+                let rightFacing = Halfedge(edge: sedge, orientation: .right)
+                
+                // a == 1
+                expect(leftFacing.isLeft(of: pt)).to(beFalse())
+                expect(rightFacing.isLeft(of: pt)).to(beFalse())
+                
+                // Not above right site
+                let rightFacing2 = Halfedge(edge: edge, orientation: .right)
+                expect(rightFacing2.isLeft(of: CGPoint(x: 11, y: 5))).to(beTrue())
+                
+                // a != 1 && b == 1
+                let is2 = Site(point: CGPoint(x: 5, y: 10))
+                let edge2 = Edge(left: s0, right: is2)
+                let halfedge2 = Halfedge(edge: edge2, orientation: .left)
+                
+                expect(halfedge2.isLeft(of: CGPoint(x: 2, y: 3))).to(beFalse())
+            }
+        }
+        
+        describe("Equatable") {
+            it("should equate properly") {
+                let sameContents = Halfedge(edge: edge, orientation: .left)
+                
+                expect(halfedge == halfedge).to(beTrue())
+                expect(halfedge == sameContents).to(beFalse())
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }
     }
 }

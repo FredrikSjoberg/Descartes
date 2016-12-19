@@ -44,8 +44,9 @@ internal class BeachLine {
         }
         
         if current.left != nil {
-            return current.left!
+            current = current.left!
         }
-        return leftEnd
+        return current
+        //return leftEnd
     }
 }

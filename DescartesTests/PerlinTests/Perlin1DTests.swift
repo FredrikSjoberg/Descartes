@@ -21,6 +21,7 @@ class Perlin1DTests: QuickSpec {
                 expect(perlin.noise(for: 0.1)).to(beCloseTo(0.7079, within: variance))
                 expect(perlin.noise(for: 0.2)).to(beCloseTo(0.2765, within: variance))
                 expect(perlin.noise(for: 0.3)).to(beCloseTo(-0.3899, within: variance))
+                expect(perlin.normalizedNoise(for: 0.3)).to(beCloseTo(0.3050, within: variance))
                 expect(perlin.noise(for: 0.4)).to(beCloseTo(-0.1548, within: variance))
                 expect(perlin.noise(for: 0.5)).to(beCloseTo(0, within: variance))
                 expect(perlin.normalizedNoise(for: 0.6)).to(beCloseTo(0.3870, within: variance))

@@ -253,6 +253,7 @@ public struct ConvexPolygon : BoundaryType {
     public func clipVertices(of segment: Segment) -> Line? {
         guard let line = maximumBounds.clipVertices(of: segment) else { return nil }
         
+        // TODO: This is only required if rect.clipVertices can return a line where p0 == p1. WHY WOULD IT?
         guard line.p0 != line.p1 else {
             // This is a point. Check if this point is within the polygon
             /*if p0.inside(polygon) {
@@ -287,7 +288,7 @@ public struct ConvexPolygon : BoundaryType {
                     te = t
                     if te > tl {
                         return nil
-                    } // Segment enters after leaving the polygon
+                    } // Segment enters after leaving the polygon (NOTE: This should not happen in convex polygon)
                 }
             }
             else {      // Segment is leaving across edge
@@ -295,7 +296,7 @@ public struct ConvexPolygon : BoundaryType {
                     tl = t
                     if tl < te {
                         return nil
-                    } // Segment leaves before entering the polygon
+                    } // Segment leaves before entering the polygon (NOTE: This should not happen in convex polygon)
                 }
             }
             

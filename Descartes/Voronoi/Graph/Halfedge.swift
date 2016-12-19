@@ -34,7 +34,9 @@ internal class Halfedge : Equatable {
     
     internal func intersects(other: Halfedge) -> CGPoint? {
         guard let e0 = edge, let e1 = other.edge else { return nil }
+        
         guard e0.rightSite != e1.rightSite else { return nil }
+        
         
         guard let intersection = e0.equation.intersects(eq: e1.equation) else { return nil }
         

@@ -16,6 +16,8 @@
 		763BF6B71E07ECFD00B7605E /* HeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763BF6B61E07ECFD00B7605E /* HeapTests.swift */; };
 		763BF6B91E07FB9600B7605E /* BeachlineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763BF6B81E07FB9600B7605E /* BeachlineTests.swift */; };
 		763BF6BB1E08014300B7605E /* BoundaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763BF6BA1E08014300B7605E /* BoundaryTests.swift */; };
+		763BF6BD1E082DA700B7605E /* VoronoiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763BF6BC1E082DA700B7605E /* VoronoiTests.swift */; };
+		763BF6BF1E0835E800B7605E /* Perlin1DTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763BF6BE1E0835E800B7605E /* Perlin1DTests.swift */; };
 		7685AD3C1E044A0D0028BE04 /* TableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7685AD3B1E044A0D0028BE04 /* TableTests.swift */; };
 		7685AD3E1E044ABE0028BE04 /* SegmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7685AD3D1E044ABE0028BE04 /* SegmentTests.swift */; };
 		76C6B7041E03DA5E00A53537 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 76C6B7031E03DA5E00A53537 /* Cartfile */; };
@@ -102,6 +104,8 @@
 		763BF6B61E07ECFD00B7605E /* HeapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeapTests.swift; sourceTree = "<group>"; };
 		763BF6B81E07FB9600B7605E /* BeachlineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeachlineTests.swift; sourceTree = "<group>"; };
 		763BF6BA1E08014300B7605E /* BoundaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundaryTests.swift; sourceTree = "<group>"; };
+		763BF6BC1E082DA700B7605E /* VoronoiTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoronoiTests.swift; sourceTree = "<group>"; };
+		763BF6BE1E0835E800B7605E /* Perlin1DTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Perlin1DTests.swift; sourceTree = "<group>"; };
 		7685AD3B1E044A0D0028BE04 /* TableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableTests.swift; sourceTree = "<group>"; };
 		7685AD3D1E044ABE0028BE04 /* SegmentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentTests.swift; sourceTree = "<group>"; };
 		76C6B7031E03DA5E00A53537 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 		76C6B7491E03FD2500A53537 /* PerlinTests */ = {
 			isa = PBXGroup;
 			children = (
+				763BF6BE1E0835E800B7605E /* Perlin1DTests.swift */,
 			);
 			path = PerlinTests;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 				763BF6B41E07ECB400B7605E /* EventQueueTests.swift */,
 				763BF6B81E07FB9600B7605E /* BeachlineTests.swift */,
 				763BF6BA1E08014300B7605E /* BoundaryTests.swift */,
+				763BF6BC1E082DA700B7605E /* VoronoiTests.swift */,
 			);
 			path = VoronoiTests;
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 				763BF6B71E07ECFD00B7605E /* HeapTests.swift in Sources */,
 				7685AD3C1E044A0D0028BE04 /* TableTests.swift in Sources */,
 				763BF6B11E07E51200B7605E /* SiteTests.swift in Sources */,
+				763BF6BD1E082DA700B7605E /* VoronoiTests.swift in Sources */,
 				76C6B7661E04363100A53537 /* OrientationTests.swift in Sources */,
 				76C6B7611E0429E500A53537 /* GLKVectorTests.swift in Sources */,
 				76C6B7681E0436C200A53537 /* TransformedVertexTests.swift in Sources */,
@@ -515,6 +522,7 @@
 				76C6B7621E0429E500A53537 /* IntTests.swift in Sources */,
 				763BF6AF1E06E7BA00B7605E /* HalfedgeTests.swift in Sources */,
 				76C6B7641E042A1400A53537 /* LineEquationTests.swift in Sources */,
+				763BF6BF1E0835E800B7605E /* Perlin1DTests.swift in Sources */,
 				76C6B75E1E0429E500A53537 /* CGPointTests.swift in Sources */,
 				763BF6B91E07FB9600B7605E /* BeachlineTests.swift in Sources */,
 				76C6B7351E03E69100A53537 /* DescartesTests.swift in Sources */,

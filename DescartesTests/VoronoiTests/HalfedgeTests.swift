@@ -81,13 +81,55 @@ class HalfedgeTests: QuickSpec {
                 expect(halfedge.intersects(other: otherHalfedge)).to(beNil())
             }
             
-           /* it("should not intersect if orientation is .left and intersection's x-coord is to the right of reference edges right site") {
+            it("should not intersect if orientation is .left and intersection's x-coord is to the right of other.edge's right site") {
+//                
+//                *
+//            ----+------>x (intersection)
+//                *  *   /
+//                    \ / (1)
+//                     X
+//                    / *
+//                   /
+//
+//              If orientation of (1) is left, ie pointing away from intersection, the intersection is NOT valid.
+//              Else, if (1) points towards intersection, it is a valid intersection
+//
+                let vs1 = Site(point: CGPoint(x: 0, y: 10))
+                let evertical = Edge(left: Site(point: p0), right: vs1)
+                let ss0 = Site(point: CGPoint(x: 5, y: 0))
+                let ss1 = Site(point: CGPoint(x: 10, y: -5))
+                let eslanted = Edge(left: ss0, right: ss1)
+                let horizontal = Halfedge(edge: evertical, orientation: .right)
+                let slantedRight = Halfedge(edge: eslanted, orientation: .right)
+                let slantedLeft = Halfedge(edge: eslanted, orientation: .left)
                 
+                expect(horizontal.intersects(other: slantedLeft)).to(beNil())
+                expect(horizontal.intersects(other: slantedRight)).toNot(beNil())
             }
             
-            it("should not intersect if orientation is .right and intersection's x-coord is to the left of reference edges right site") {
+            it("should not intersect if orientation is .right and intersection's x-coord is to the left of other.edge's right site") {
+//                
+//                           *
+//                            X
+//                       (1) / \
+//                *         /   *
+//            ----+------->x
+//                *         (intersection)
+//                
+//              Reverse from test above
                 
-            }*/
+                let vs1 = Site(point: CGPoint(x: 0, y: 10))
+                let evertical = Edge(left: Site(point: p0), right: vs1)
+                let ss0 = Site(point: CGPoint(x: 5, y: 0))
+                let ss1 = Site(point: CGPoint(x: 15, y: -5))
+                let eslanted = Edge(left: ss0, right: ss1)
+                let horizontal = Halfedge(edge: evertical, orientation: .right)
+                let slantedRight = Halfedge(edge: eslanted, orientation: .right)
+                let slantedLeft = Halfedge(edge: eslanted, orientation: .left)
+                
+                expect(horizontal.intersects(other: slantedRight)).to(beNil())
+                expect(horizontal.intersects(other: slantedLeft)).toNot(beNil())
+            }
             
             let is0 = Site(point: CGPoint(x: 0, y: 10))
             let is1 = Site(point: CGPoint(x: 10, y: 0))
@@ -100,6 +142,7 @@ class HalfedgeTests: QuickSpec {
                 expect(is1).toNot(beNil())
                 
                 expect(ihalfedge.intersects(other: halfedge)).toNot(beNil())
+                expect(halfedge.intersects(other: ihalfedge)).toNot(beNil())
             }
         }
     }

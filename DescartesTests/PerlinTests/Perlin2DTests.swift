@@ -9,6 +9,7 @@
 import Foundation
 import Nimble
 import Quick
+import GLKit
 @testable import Descartes
 
 class Perlin2DTests: QuickSpec {
@@ -21,9 +22,11 @@ class Perlin2DTests: QuickSpec {
             CGPoint(x: 0.3, y: 0.6),
             CGPoint(x: 0.4, y: 0.9),
             CGPoint(x: 0.5, y: 0.8),
-            CGPoint(x: 0.6, y: 0.7),
-            CGPoint(x: 0.8, y: 0.5)
         ]
+        
+        let glkVector1 = GLKVector2(v: (0.6, 0.7))
+        let glkVector2 = GLKVector2(v: (0.8, 0.5))
+        
         describe("Deterministic") {
             it("should generate same results every time") {
                 let perlin = Perlin2D(octaves: 4, frequency: 4, amplitude: 1, seed: 1)
@@ -34,8 +37,9 @@ class Perlin2DTests: QuickSpec {
                 expect(perlin.noise(for: points[3])).to(beCloseTo(0.1150, within: variance))
                 expect(perlin.noise(for: points[4])).to(beCloseTo(0.0822, within: variance))
                 expect(perlin.noise(for: points[5])).to(beCloseTo(-0.1859, within: variance))
-                expect(perlin.noise(for: points[6])).to(beCloseTo(0.1936, within: variance))
-                expect(perlin.noise(for: points[7])).to(beCloseTo(-0.0635, within: variance))
+                
+                expect(perlin.noise(for: glkVector1)).to(beCloseTo(0.1936, within: variance))
+                expect(perlin.normalizedNoise(for: glkVector2)).to(beCloseTo(0.4682, within: variance))
             }
         }
     }
